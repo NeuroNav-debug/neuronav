@@ -1318,27 +1318,6 @@ body.reduce-motion .bg-orb{display:none}
 .confirm-modal-actions{display:flex;gap:10px}
 .confirm-modal-actions .btn{flex:1}
 </style>
-
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#7c3aed">
-  <meta name="msapplication-TileColor" content="#7c3aed">
-  <meta name="msapplication-config" content="none">
-
-  <!-- PWA Capabilities -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="NeuroNav">
-
-  <!-- iOS PWA -->
-  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="NeuroNav">
-
-  <!-- Windows PWA -->
-  <meta name="msapplication-starturl" content="/">
-  <meta name="msapplication-navbutton-color" content="#7c3aed">
-
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute">
@@ -1622,160 +1601,215 @@ body.reduce-motion .bg-orb{display:none}
     <div class="map-scroll-wrap">
       <div class="map-title-row"><span class="map-realm-label">✦ The Realm of NeuroNav ✦</span></div>
       <div class="world-map-container" id="worldMapContainer">
-        <svg id="worldMapSvg" viewBox="0 0 400 560" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <radialGradient id="parch" cx="50%" cy="45%" r="60%"><stop offset="0%" stop-color="#3a3060"/><stop offset="60%" stop-color="#221a40"/><stop offset="100%" stop-color="#130f28"/></radialGradient>
-            <radialGradient id="gForest" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#2d5a3d" stop-opacity=".9"/><stop offset="100%" stop-color="#1a3627" stop-opacity=".6"/></radialGradient>
-            <radialGradient id="gMeadow" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#5a3d72" stop-opacity=".85"/><stop offset="100%" stop-color="#3a2455" stop-opacity=".55"/></radialGradient>
-            <radialGradient id="gPond" cx="40%" cy="45%" r="55%"><stop offset="0%" stop-color="#1a4a6a" stop-opacity=".9"/><stop offset="100%" stop-color="#0d2a3e" stop-opacity=".55"/></radialGradient>
-            <radialGradient id="gTower" cx="50%" cy="30%" r="55%"><stop offset="0%" stop-color="#5a2a6a" stop-opacity=".9"/><stop offset="100%" stop-color="#381848" stop-opacity=".6"/></radialGradient>
-            <radialGradient id="gCottage" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#6a3a20" stop-opacity=".85"/><stop offset="100%" stop-color="#3e2010" stop-opacity=".55"/></radialGradient>
-            <radialGradient id="gCave" cx="50%" cy="45%" r="55%"><stop offset="0%" stop-color="#2a2a4a" stop-opacity=".9"/><stop offset="100%" stop-color="#141428" stop-opacity=".6"/></radialGradient>
-            <radialGradient id="gGrove" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#3a5a2a" stop-opacity=".85"/><stop offset="100%" stop-color="#1e3014" stop-opacity=".6"/></radialGradient>
-            <radialGradient id="gMarket" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="#5a4a20" stop-opacity=".85"/><stop offset="100%" stop-color="#362c10" stop-opacity=".6"/></radialGradient>
-            <filter id="mapGlow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            <filter id="mapSoftGlow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            <filter id="mapHover"><feColorMatrix type="matrix" values="1.3 0 0 0 0 0 1.3 0 0 0 0 0 1.3 0 0 0 0 0 1 0"/></filter>
-          </defs>
-          <!-- Parchment base -->
-          <rect width="400" height="560" fill="url(#parch)" rx="20"/>
-          <!-- Stars -->
-          <g opacity=".5"><circle cx="18" cy="22" r="1" fill="#fff"/><circle cx="44" cy="10" r="1.5" fill="#c8b8ff"/><circle cx="78" cy="32" r="1" fill="#fff"/><circle cx="360" cy="15" r="1.5" fill="#fff"/><circle cx="385" cy="40" r="1" fill="#c8b8ff"/><circle cx="330" cy="28" r="1.2" fill="#fff"/><circle cx="15" cy="120" r="1" fill="#fff"/><circle cx="390" cy="180" r="1.2" fill="#c8b8ff"/><circle cx="8" cy="340" r="1" fill="#fff"/><circle cx="395" cy="400" r="1" fill="#c8b8ff"/><circle cx="50" cy="520" r="1" fill="#fff"/><circle cx="370" cy="510" r="1.2" fill="#fff"/><circle cx="200" cy="8" r="1.5" fill="#ffe88a"/><circle cx="160" cy="22" r="1" fill="#fff"/><circle cx="240" cy="18" r="1" fill="#c8b8ff"/></g>
-          <!-- Dashed paths -->
-          <g stroke="#a07850" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".3" stroke-dasharray="5,4">
-            <path d="M130 230 Q90 200 80 160"/><path d="M140 260 Q150 310 160 350"/><path d="M175 230 Q230 215 280 220"/><path d="M120 255 Q80 290 75 340"/><path d="M115 135 Q200 100 265 125"/><path d="M295 155 Q295 190 285 220"/><path d="M185 365 Q235 355 270 340"/><path d="M75 128 Q110 72 178 55"/><path d="M278 120 Q248 82 220 58"/><path d="M100 370 Q150 390 260 340"/><path d="M165 395 Q175 440 185 480"/><path d="M295 230 Q340 270 345 310"/>
-          </g>
+        <svg id="worldMapSvg" viewBox="0 0 400 640" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="gWood" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#3a9050"/><stop offset="100%" stop-color="#0a1e10"/></radialGradient>
+  <radialGradient id="gTemple" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#7a40c0"/><stop offset="100%" stop-color="#160828"/></radialGradient>
+  <radialGradient id="gTower" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#3060c8"/><stop offset="100%" stop-color="#080e22"/></radialGradient>
+  <radialGradient id="gGrove" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#2a7838"/><stop offset="100%" stop-color="#081410"/></radialGradient>
+  <radialGradient id="gCottage" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#c87028"/><stop offset="100%" stop-color="#1e0a02"/></radialGradient>
+  <radialGradient id="gMarket" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#b88828"/><stop offset="100%" stop-color="#181005"/></radialGradient>
+  <radialGradient id="gMeadow" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#a82898"/><stop offset="100%" stop-color="#150618"/></radialGradient>
+  <radialGradient id="gNook" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#c89040"/><stop offset="100%" stop-color="#180e04"/></radialGradient>
+  <radialGradient id="gChamber" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#3040a0"/><stop offset="100%" stop-color="#04060e"/></radialGradient>
+  <radialGradient id="gPond" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#1888a8"/><stop offset="100%" stop-color="#04101a"/></radialGradient>
+  <radialGradient id="gCavern" cx="50%" cy="45%" r="58%"><stop offset="0%" stop-color="#6838b0"/><stop offset="100%" stop-color="#0c0618"/></radialGradient>
+  <filter id="mapGlow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <filter id="hubGlow"><feGaussianBlur stdDeviation="9" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <pattern id="mapDots" patternUnits="userSpaceOnUse" width="18" height="18"><circle cx="9" cy="9" r=".7" fill="rgba(255,255,255,.06)"/></pattern>
+</defs>
 
-          <!-- ===== MAP REGIONS (each is a <g class="map-region"> with data-section) ===== -->
+<!-- TERRITORY POLYGONS — each region is a clickable group -->
+<g class="map-region" data-section="timer" data-label="Whispering Wood">
+  <polygon points="0,0 133,0 130,105 133,210 68,213 0,210" fill="url(#gWood)"/>
+  <g transform="translate(65,78)" pointer-events="none">
+    <polygon points="0,55 -22,55 -11,30" fill="#5cc870" opacity=".9"/><polygon points="0,60 -20,60 -10,38" fill="#3aa050" opacity=".7"/>
+    <polygon points="0,50 22,50 11,25" fill="#6ad880" opacity=".85"/><polygon points="0,55 20,55 10,32" fill="#3aa050" opacity=".65"/>
+    <polygon points="0,45 -8,45 -4,28" fill="#8aea98" opacity=".8"/>
+    <circle cx="-18" cy="38" r="1.5" fill="#ffe880" opacity=".9" filter="url(#mapGlow)"/>
+    <circle cx="18" cy="44" r="1.2" fill="#ffe880" opacity=".7" filter="url(#mapGlow)"/>
+    <circle cx="2" cy="50" r="1" fill="#c0ffb0" opacity=".8" filter="url(#mapGlow)"/>
+  </g>
+  <text x="65" y="168" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#90e8a0" pointer-events="none">🌲 Whispering Wood</text>
+  <text x="65" y="181" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#70c880" opacity=".85" pointer-events="none">Focus Timer</text>
+</g>
 
-          <!-- DAWN TEMPLE → routines -->
-          <g class="map-region" data-section="routines" data-label="Dawn Temple">
-            <ellipse cx="200" cy="52" rx="58" ry="36" fill="url(#gMeadow)" stroke="#9f7fcc" stroke-width="1.5" opacity=".85"/>
-            <g fill="#d4aaff" opacity=".7"><rect x="173" y="40" width="5" height="24" rx="2"/><rect x="185" y="36" width="5" height="28" rx="2"/><rect x="197" y="33" width="5" height="31" rx="2"/><rect x="209" y="36" width="5" height="28" rx="2"/><rect x="221" y="40" width="5" height="24" rx="2"/></g>
-            <rect x="168" y="63" width="64" height="4" rx="2" fill="#c8a0f0" opacity=".7"/>
-            <ellipse cx="200" cy="35" rx="28" ry="12" fill="#ffe88a" opacity=".12" filter="url(#mapSoftGlow)"/>
-            <circle cx="200" cy="28" r="7" fill="#ffe88a" opacity=".5" filter="url(#mapGlow)"/>
-            <path d="M193 27 L191 22 M200 25 L200 19 M207 27 L209 22 M190 31 L184 30 M210 31 L216 30" stroke="#ffe88a" stroke-width="1.2" opacity=".7" stroke-linecap="round"/>
-            <text x="200" y="92" text-anchor="middle" fill="#d4b8ff" font-size="11" font-family="serif" font-weight="bold" opacity=".95">🌅 Dawn Temple</text>
-            <text x="200" y="104" text-anchor="middle" fill="#a89acc" font-size="8.5" font-family="serif" opacity=".8">Routines</text>
-          </g>
+<g class="map-region" data-section="routines" data-label="Dawn Temple">
+  <polygon points="133,0 267,0 270,105 267,210 200,207 133,210 130,105" fill="url(#gTemple)"/>
+  <g transform="translate(200,72)" pointer-events="none">
+    <circle cx="0" cy="-14" r="10" fill="#ffe870" opacity=".85"/><g stroke="#ffe870" stroke-width="1.5" opacity=".6" stroke-linecap="round"><line x1="0" y1="-28" x2="0" y2="-34"/><line x1="12" y1="-22" x2="16" y2="-26"/><line x1="16" y1="-10" x2="20" y2="-8"/><line x1="-12" y1="-22" x2="-16" y2="-26"/><line x1="-16" y1="-10" x2="-20" y2="-8"/></g>
+    <rect x="-28" y="0" width="6" height="30" rx="2" fill="#c8a8f0" opacity=".8"/><rect x="-15" y="-5" width="6" height="35" rx="2" fill="#d4b8ff" opacity=".85"/><rect x="-3" y="-8" width="6" height="38" rx="2" fill="#e0c8ff" opacity=".9"/><rect x="9" y="-5" width="6" height="35" rx="2" fill="#d4b8ff" opacity=".85"/><rect x="22" y="0" width="6" height="30" rx="2" fill="#c8a8f0" opacity=".8"/>
+    <rect x="-30" y="30" width="60" height="5" rx="2" fill="#b890e0" opacity=".75"/>
+  </g>
+  <text x="200" y="165" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#d8a8ff" pointer-events="none">🌅 Dawn Temple</text>
+  <text x="200" y="178" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#b888e0" opacity=".85" pointer-events="none">Routines</text>
+</g>
 
-          <!-- WHISPERING WOOD → timer -->
-          <g class="map-region" data-section="timer" data-label="Whispering Wood">
-            <ellipse cx="80" cy="140" rx="65" ry="55" fill="url(#gForest)" stroke="#3d7a50" stroke-width="1.5" opacity=".85"/>
-            <g fill="#4a9a65" opacity=".8"><polygon points="52,158 65,125 78,158"/><polygon points="68,153 82,118 96,153"/><polygon points="84,160 98,128 112,160"/><polygon points="58,162 68,140 78,162"/></g>
-            <g fill="#2d6040" opacity=".6"><polygon points="55,162 65,145 75,162"/><polygon points="87,164 98,147 109,164"/></g>
-            <circle cx="60" cy="140" r="2" fill="#ffe88a" opacity=".8" filter="url(#mapGlow)"/>
-            <circle cx="100" cy="132" r="1.5" fill="#ffe88a" opacity=".6" filter="url(#mapGlow)"/>
-            <circle cx="75" cy="155" r="1.5" fill="#c8ffb8" opacity=".7" filter="url(#mapGlow)"/>
-            <text x="80" y="198" text-anchor="middle" fill="#88d4a0" font-size="10.5" font-family="serif" font-weight="bold" opacity=".95">🌲 Whispering Wood</text>
-            <text x="80" y="209" text-anchor="middle" fill="#70b888" font-size="8.5" font-family="serif" opacity=".8">Focus Timer</text>
-          </g>
+<g class="map-region" data-section="stats" data-label="Crystal Tower">
+  <polygon points="267,0 400,0 400,210 333,213 267,210 270,105" fill="url(#gTower)"/>
+  <g transform="translate(333,72)" pointer-events="none">
+    <polygon points="0,-20 -16,38 16,38" fill="#4878e8" opacity=".85"/><rect x="-16" y="38" width="32" height="22" rx="3" fill="#3060c0" opacity=".8"/>
+    <polygon points="0,-20 -6,-8 6,-8" fill="#a0c8ff" opacity=".95"/><circle cx="0" cy="-20" r="5" fill="#e0f0ff" opacity=".95" filter="url(#mapGlow)"/>
+    <circle cx="-22" cy="20" r="2.5" fill="#80b0ff" opacity=".8" filter="url(#mapGlow)"/><circle cx="22" cy="28" r="2" fill="#80b0ff" opacity=".7" filter="url(#mapGlow)"/>
+    <rect x="-5" y="44" width="10" height="12" rx="2" fill="#c0d8ff" opacity=".7"/>
+  </g>
+  <text x="333" y="168" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#90b8ff" pointer-events="none">🔮 Crystal Tower</text>
+  <text x="333" y="181" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#6898e0" opacity=".85" pointer-events="none">Stats</text>
+</g>
 
-          <!-- CRYSTAL TOWER → stats -->
-          <g class="map-region" data-section="stats" data-label="Crystal Tower">
-            <ellipse cx="295" cy="140" rx="60" ry="50" fill="url(#gTower)" stroke="#9060c0" stroke-width="1.5" opacity=".85"/>
-            <g fill="#b88ae0" opacity=".7"><polygon points="295,88 280,130 310,130"/><rect x="282" y="130" width="26" height="30" rx="2"/><polygon points="295,88 291,96 299,96"/></g>
-            <circle cx="295" cy="92" r="5" fill="#e0c8ff" opacity=".9" filter="url(#mapGlow)"/>
-            <g fill="#d4aaff" opacity=".7" filter="url(#mapGlow)"><circle cx="265" cy="120" r="2"/><circle cx="325" cy="125" r="1.5"/><circle cx="278" cy="155" r="1.5"/><circle cx="315" cy="145" r="2"/></g>
-            <text x="295" y="197" text-anchor="middle" fill="#c8a0f0" font-size="11" font-family="serif" font-weight="bold" opacity=".95">🔮 Crystal Tower</text>
-            <text x="295" y="209" text-anchor="middle" fill="#a07ad0" font-size="8.5" font-family="serif" opacity=".8">Stats</text>
-          </g>
+<g class="map-region" data-section="regulate" data-label="Healing Grove">
+  <polygon points="0,210 68,213 133,210 130,315 133,420 67,417 0,420" fill="url(#gGrove)"/>
+  <g transform="translate(65,286)" pointer-events="none">
+    <ellipse cx="-16" cy="38" rx="6" ry="14" fill="#5aaa40" opacity=".85"/><ellipse cx="-16" cy="26" rx="14" ry="9" fill="#3a8a28" opacity=".9"/>
+    <circle cx="-20" cy="25" r="2.5" fill="#fff" opacity=".6"/><circle cx="-14" cy="22" r="1.8" fill="#fff" opacity=".5"/>
+    <ellipse cx="16" cy="36" rx="5" ry="12" fill="#7abb50" opacity=".8"/><ellipse cx="16" cy="26" rx="11" ry="8" fill="#5a9a38" opacity=".85"/>
+    <circle cx="13" cy="25" r="2" fill="#fff" opacity=".6"/>
+    <path d="M0,20 C-4,14 -12,14 -12,22 C-12,28 0,36 0,36 C0,36 12,28 12,22 C12,14 4,14 0,20Z" fill="#88ee88" opacity=".75"/>
+    <circle cx="-28" cy="30" r="2" fill="#aaffaa" opacity=".7" filter="url(#mapGlow)"/>
+    <circle cx="28" cy="22" r="1.5" fill="#aaffaa" opacity=".6" filter="url(#mapGlow)"/>
+  </g>
+  <text x="65" y="372" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#88e888" pointer-events="none">🍄 Healing Grove</text>
+  <text x="65" y="385" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#60c060" opacity=".85" pointer-events="none">Regulate</text>
+</g>
 
-          <!-- COZY COTTAGE → quests (main hub) -->
-          <g class="map-region" data-section="quests" data-label="Cozy Cottage">
-            <ellipse cx="148" cy="245" rx="68" ry="55" fill="url(#gCottage)" stroke="#ffcc66" stroke-width="2" opacity=".9"/>
-            <ellipse cx="148" cy="245" rx="65" ry="52" fill="none" stroke="#ffcc66" stroke-width="2.5" opacity=".2" filter="url(#mapSoftGlow)"/>
-            <g opacity=".85"><rect x="118" y="245" width="52" height="34" rx="3" fill="#8b5e38"/><polygon points="112,247 148,218 184,247" fill="#a07040"/><rect x="134" y="258" width="14" height="20" rx="2" fill="#5a3820"/><rect x="121" y="250" width="10" height="10" rx="1" fill="#ffe88a" opacity=".8"/><rect x="157" y="250" width="10" height="10" rx="1" fill="#ffe88a" opacity=".8"/><path d="M170 232 Q172 222 168 215 Q173 207 170 198" stroke="#c8b0a0" stroke-width="2" fill="none" opacity=".5" stroke-linecap="round"/><circle cx="141" cy="255" r="4" fill="#2d6040" opacity=".7"/></g>
-            <text x="148" y="304" text-anchor="middle" fill="#e8c080" font-size="11" font-family="serif" font-weight="bold" opacity=".95">🏡 Cozy Cottage</text>
-            <text x="148" y="316" text-anchor="middle" fill="#c89a60" font-size="8.5" font-family="serif" opacity=".8">Quests</text>
-          </g>
+<g class="map-region" data-section="quests" data-label="Cozy Cottage">
+  <polygon points="133,210 200,207 267,210 270,315 267,420 200,423 133,420 130,315" fill="url(#gCottage)"/>
+  <g transform="translate(200,280)" pointer-events="none" filter="url(#hubGlow)">
+    <rect x="-26" y="18" width="52" height="34" rx="4" fill="#b07840" opacity=".9"/>
+    <polygon points="-32,20 0,-10 32,20" fill="#d09a50" opacity=".95"/>
+    <rect x="-7" y="28" width="14" height="24" rx="3" fill="#6a3818" opacity=".9"/>
+    <circle cx="5" cy="41" r="2" fill="#ffe090" opacity=".8"/>
+    <rect x="-22" y="24" width="12" height="12" rx="2" fill="#ffe880" opacity=".85"/>
+    <rect x="10" y="24" width="12" height="12" rx="2" fill="#ffe880" opacity=".85"/>
+    <rect x="14" y="-16" width="8" height="20" rx="2" fill="#c08840" opacity=".8"/>
+    <path d="M18,-16 C16,-24 20,-30 17,-36" stroke="rgba(255,220,180,.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="0" cy="28" r="4.5" fill="none" stroke="#3a8030" stroke-width="2" opacity=".7"/>
+  </g>
+  <ellipse cx="200" cy="322" rx="52" ry="48" fill="none" stroke="rgba(255,200,60,.4)" stroke-width="3" pointer-events="none"/>
+  <text x="200" y="368" text-anchor="middle" font-family="Georgia,serif" font-size="12.5" font-weight="bold" fill="#ffd080" pointer-events="none">🏡 Cozy Cottage</text>
+  <text x="200" y="383" text-anchor="middle" font-family="Georgia,serif" font-size="9.5" fill="#e0a850" opacity=".9" pointer-events="none">Quests — Home Base</text>
+</g>
 
-          <!-- SCRIBE'S NOOK → notes -->
-          <g class="map-region" data-section="notes" data-label="Scribe's Nook">
-            <ellipse cx="242" cy="252" rx="46" ry="37" fill="url(#gMarket)" stroke="#8a7030" stroke-width="1.5" opacity=".8"/>
-            <g opacity=".75" transform="translate(216,235)"><path d="M26 8 Q14 6 4 10 L4 32 Q14 28 26 30 Q38 28 48 32 L48 10 Q38 6 26 8 Z" fill="#d4b870" stroke="#a08840" stroke-width="1"/><line x1="26" y1="8" x2="26" y2="30" stroke="#a08840" stroke-width="1"/><line x1="10" y1="15" x2="22" y2="15" stroke="#8a6830" stroke-width=".8" opacity=".6"/><line x1="10" y1="19" x2="22" y2="19" stroke="#8a6830" stroke-width=".8" opacity=".6"/><line x1="10" y1="23" x2="22" y2="23" stroke="#8a6830" stroke-width=".8" opacity=".6"/><line x1="30" y1="15" x2="44" y2="15" stroke="#8a6830" stroke-width=".8" opacity=".6"/><line x1="30" y1="19" x2="44" y2="19" stroke="#8a6830" stroke-width=".8" opacity=".6"/></g>
-            <circle cx="224" cy="242" r="1.5" fill="#ffe88a" opacity=".7" filter="url(#mapGlow)"/>
-            <circle cx="262" cy="245" r="1.5" fill="#ffe88a" opacity=".6" filter="url(#mapGlow)"/>
-            <text x="242" y="295" text-anchor="middle" fill="#d4b870" font-size="10.5" font-family="serif" font-weight="bold" opacity=".95">📜 Scribe's Nook</text>
-            <text x="242" y="306" text-anchor="middle" fill="#b09050" font-size="8.5" font-family="serif" opacity=".8">Notes</text>
-          </g>
+<g class="map-region" data-section="todo" data-label="Village Market">
+  <polygon points="267,210 333,213 400,210 400,420 333,417 267,420 270,315" fill="url(#gMarket)"/>
+  <g transform="translate(333,284)" pointer-events="none">
+    <rect x="-36" y="16" width="28" height="22" rx="3" fill="#a06830" opacity=".8"/><polygon points="-40,16 -22,4 -4,16" fill="#e09040" opacity=".85"/>
+    <rect x="-2" y="20" width="28" height="18" rx="3" fill="#886028" opacity=".75"/><polygon points="-6,20 12,8 30,20" fill="#c87830" opacity=".85"/>
+    <path d="M12,4 L18,10 L9,18" stroke="#fff" stroke-width="2" fill="none" opacity=".8" stroke-linecap="round"/>
+    <circle cx="-25" cy="24" r="3" fill="#ffc060" opacity=".7"/><circle cx="-16" cy="24" r="2.5" fill="#ff9040" opacity=".7"/><circle cx="-8" cy="24" r="3" fill="#ffd080" opacity=".7"/>
+  </g>
+  <text x="333" y="372" text-anchor="middle" font-family="Georgia,serif" font-size="11" font-weight="bold" fill="#f0d080" pointer-events="none">🛖 Village Market</text>
+  <text x="333" y="385" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#c8a840" opacity=".85" pointer-events="none">To-Do</text>
+</g>
 
-          <!-- VILLAGE MARKET → todo -->
-          <g class="map-region" data-section="todo" data-label="Village Market">
-            <ellipse cx="322" cy="248" rx="50" ry="40" fill="url(#gMarket)" stroke="#a08030" stroke-width="1.5" opacity=".8"/>
-            <g opacity=".75" transform="translate(296,232)"><rect x="0" y="10" width="18" height="20" rx="2" fill="#8b5e38"/><polygon points="-3,10 9,2 21,10" fill="#c87a3a"/><rect x="20" y="14" width="18" height="16" rx="2" fill="#7a5030"/><polygon points="17,14 29,6 41,14" fill="#e89040"/><path d="M26 4 L32 8 L24 14" stroke="#fff" stroke-width="1.5" fill="none" opacity=".8" stroke-linecap="round"/></g>
-            <circle cx="305" cy="248" r="1.5" fill="#ffcc66" opacity=".6" filter="url(#mapGlow)"/>
-            <text x="322" y="295" text-anchor="middle" fill="#e8b860" font-size="10.5" font-family="serif" font-weight="bold" opacity=".95">🛖 Village Market</text>
-            <text x="322" y="306" text-anchor="middle" fill="#c09040" font-size="8.5" font-family="serif" opacity=".8">To-Do</text>
-          </g>
+<g class="map-region" data-section="habits" data-label="Bloom Meadow">
+  <polygon points="0,420 67,417 133,420 130,535 65,538 0,535" fill="url(#gMeadow)"/>
+  <g transform="translate(65,455)" pointer-events="none">
+    <g transform="translate(-20,10)"><circle cx="0" cy="0" r="5.5" fill="#e868c0" opacity=".8"/><circle cx="0" cy="0" r="2.5" fill="#fff8a0"/><g fill="#e868c0" opacity=".7"><ellipse cx="0" cy="-8" rx="3" ry="4.5"/><ellipse cx="0" cy="8" rx="3" ry="4.5"/><ellipse cx="-8" cy="0" rx="4.5" ry="3"/><ellipse cx="8" cy="0" rx="4.5" ry="3"/></g></g>
+    <g transform="translate(5,5)"><circle cx="0" cy="0" r="4.5" fill="#c860e8" opacity=".75"/><circle cx="0" cy="0" r="2" fill="#fff8a0"/></g>
+    <g transform="translate(20,14)"><circle cx="0" cy="0" r="5" fill="#ff80d0" opacity=".8"/><circle cx="0" cy="0" r="2.2" fill="#fff8a0"/></g>
+    <path d="M-5,-12 l1.5,4.5 4.8.4-3.6,3.2 1.2,4.8-4.2-2.4-4.2,2.4 1.2-4.8-3.6-3.2 4.8-.4z" fill="#ffe870" opacity=".85" transform="translate(0,-2)"/>
+  </g>
+  <text x="65" y="503" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" font-weight="bold" fill="#f080d0" pointer-events="none">🌸 Bloom Meadow</text>
+  <text x="65" y="515" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#c060a8" opacity=".85" pointer-events="none">Habits</text>
+</g>
 
-          <!-- HEALING GROVE → regulate -->
-          <g class="map-region" data-section="regulate" data-label="Healing Grove">
-            <ellipse cx="70" cy="355" rx="58" ry="48" fill="url(#gGrove)" stroke="#4a8040" stroke-width="1.5" opacity=".85"/>
-            <g opacity=".8" transform="translate(38,330)"><ellipse cx="12" cy="20" rx="5" ry="12" fill="#6aaa55"/><ellipse cx="12" cy="10" rx="10" ry="7" fill="#4a8a35"/><circle cx="9" cy="10" r="1.5" fill="#fff" opacity=".6"/><circle cx="13" cy="8" r="1" fill="#fff" opacity=".5"/><ellipse cx="30" cy="22" rx="4" ry="10" fill="#88cc66"/><ellipse cx="30" cy="13" rx="8" ry="6" fill="#66aa44"/><circle cx="28" cy="13" r="1.2" fill="#fff" opacity=".6"/></g>
-            <circle cx="55" cy="345" r="2" fill="#88ffaa" opacity=".7" filter="url(#mapGlow)"/>
-            <circle cx="95" cy="360" r="1.5" fill="#88ffaa" opacity=".6" filter="url(#mapGlow)"/>
-            <circle cx="68" cy="375" r="2" fill="#b8ffc8" opacity=".5" filter="url(#mapGlow)"/>
-            <text x="70" y="408" text-anchor="middle" fill="#90d880" font-size="10.5" font-family="serif" font-weight="bold" opacity=".95">🍄 Healing Grove</text>
-            <text x="70" y="419" text-anchor="middle" fill="#70b860" font-size="8.5" font-family="serif" opacity=".8">Regulate</text>
-          </g>
+<g class="map-region" data-section="notes" data-label="Scribe's Nook">
+  <polygon points="133,420 200,423 267,420 269,535 200,532 130,535" fill="url(#gNook)"/>
+  <g transform="translate(200,455)" pointer-events="none">
+    <path d="M-24,8 Q-12,4 0,8 Q12,4 24,8 L24,36 Q12,32 0,36 Q-12,32 -24,36 Z" fill="#d4b060" opacity=".85" stroke="#a08030" stroke-width=".8"/>
+    <line x1="0" y1="8" x2="0" y2="36" stroke="#a08030" stroke-width="1.2" opacity=".8"/>
+    <g stroke="#8a6820" stroke-width=".8" opacity=".6"><line x1="-18" y1="16" x2="-4" y2="15"/><line x1="-18" y1="20" x2="-4" y2="19"/><line x1="-18" y1="24" x2="-4" y2="23"/><line x1="4" y1="16" x2="20" y2="15"/><line x1="4" y1="20" x2="20" y2="19"/><line x1="4" y1="24" x2="20" y2="23"/></g>
+    <path d="M16,-6 Q24,4 18,12 Q14,8 16,-6Z" fill="#ffe8a0" opacity=".8"/>
+    <line x1="18" y1="12" x2="16" y2="20" stroke="#ffe8a0" stroke-width="1" opacity=".7"/>
+  </g>
+  <text x="200" y="503" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" font-weight="bold" fill="#f0c868" pointer-events="none">📜 Scribe's Nook</text>
+  <text x="200" y="515" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#c0a040" opacity=".85" pointer-events="none">Notes</text>
+</g>
 
-          <!-- ANIMAL POND → pond -->
-          <g class="map-region" data-section="pond" data-label="Animal Pond">
-            <ellipse cx="268" cy="348" rx="60" ry="46" fill="url(#gPond)" stroke="#2a7aaa" stroke-width="1.5" opacity=".85"/>
-            <ellipse cx="268" cy="355" rx="38" ry="20" fill="#1a5a8a" opacity=".7"/>
-            <ellipse cx="268" cy="355" rx="36" ry="18" fill="none" stroke="#4aa0cc" stroke-width="1" opacity=".5"/>
-            <path d="M248 352 Q260 349 268 352 Q276 355 290 352" stroke="#7ad0f0" stroke-width="1" fill="none" opacity=".5"/>
-            <g transform="translate(256,344)" opacity=".9"><ellipse cx="10" cy="12" rx="9" ry="7" fill="#ffe88a"/><circle cx="10" cy="6" r="5" fill="#ffe88a"/><path d="M15 7 L19 7 L17 9 Z" fill="#ff9040"/><circle cx="12" cy="5" r="1.2" fill="#333"/><circle cx="12.4" cy="4.6" r=".4" fill="#fff"/></g>
-            <circle cx="244" cy="362" r="1.5" fill="#a0e8ff" opacity=".7" filter="url(#mapGlow)"/>
-            <circle cx="292" cy="358" r="1.5" fill="#a0e8ff" opacity=".6" filter="url(#mapGlow)"/>
-            <text x="268" y="400" text-anchor="middle" fill="#80d0f0" font-size="10.5" font-family="serif" font-weight="bold" opacity=".95">🐾 Animal Pond</text>
-            <text x="268" y="411" text-anchor="middle" fill="#60b0d0" font-size="8.5" font-family="serif" opacity=".8">Collect</text>
-          </g>
+<g class="map-region" data-section="coach" data-label="Sage's Chamber">
+  <polygon points="267,420 333,417 400,420 400,535 333,538 269,535" fill="url(#gChamber)"/>
+  <g transform="translate(333,455)" pointer-events="none">
+    <ellipse cx="0" cy="36" rx="14" ry="5" fill="#202868" opacity=".7"/>
+    <circle cx="0" cy="14" r="20" fill="#181840" opacity=".85" stroke="#4860b8" stroke-width="1.5"/>
+    <circle cx="-4" cy="10" r="7" fill="#3060c0" opacity=".35"/>
+    <circle cx="-5" cy="9" r="4" fill="#80a0ff" opacity=".3"/>
+    <circle cx="-6" cy="8" r="2" fill="#c0d0ff" opacity=".45"/>
+    <circle cx="20" cy="0" r="2.5" fill="#8090ff" opacity=".7" filter="url(#mapGlow)"/>
+    <circle cx="-20" cy="20" r="2" fill="#8090ff" opacity=".6" filter="url(#mapGlow)"/>
+  </g>
+  <text x="333" y="503" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" font-weight="bold" fill="#8898f8" pointer-events="none">🔭 Sage's Chamber</text>
+  <text x="333" y="515" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#6070d0" opacity=".85" pointer-events="none">AI Coach</text>
+</g>
 
-          <!-- BLOOM MEADOW → habits -->
-          <g class="map-region" data-section="habits" data-label="Bloom Meadow">
-            <ellipse cx="172" cy="388" rx="60" ry="46" fill="url(#gMeadow)" stroke="#8a60aa" stroke-width="1.5" opacity=".85"/>
-            <g opacity=".8"><circle cx="150" cy="393" r="6" fill="#e070c0" opacity=".7"/><circle cx="150" cy="393" r="3" fill="#fff9aa"/><g transform="translate(150,393)"><ellipse cx="0" cy="-8" rx="3" ry="4" fill="#e070c0" opacity=".7"/><ellipse cx="0" cy="8" rx="3" ry="4" fill="#e070c0" opacity=".7"/><ellipse cx="-8" cy="0" rx="4" ry="3" fill="#e070c0" opacity=".7"/><ellipse cx="8" cy="0" rx="4" ry="3" fill="#e070c0" opacity=".7"/></g><circle cx="174" cy="383" r="5" fill="#ff9ad0" opacity=".7"/><circle cx="174" cy="383" r="2.5" fill="#ffe8aa"/><circle cx="193" cy="394" r="5.5" fill="#cc70e0" opacity=".7"/><circle cx="193" cy="394" r="2.5" fill="#fff9aa"/><path d="M168 378 l2 5 5.5.5-4 4 1 5.5-5-2.5-5 2.5 1-5.5-4-4 5.5-.5z" fill="#ffe88a" opacity=".8"/></g>
-            <circle cx="156" cy="403" r="2" fill="#ffaadd" opacity=".7" filter="url(#mapGlow)"/>
-            <text x="172" y="440" text-anchor="middle" fill="#e088d0" font-size="10.5" font-family="serif" font-weight="bold" opacity=".95">🌸 Bloom Meadow</text>
-            <text x="172" y="451" text-anchor="middle" fill="#c060b0" font-size="8.5" font-family="serif" opacity=".8">Habits</text>
-          </g>
+<g class="map-region" data-section="pond" data-label="Animal Pond">
+  <polygon points="0,535 65,538 130,535 200,532 205,640 0,640" fill="url(#gPond)"/>
+  <g transform="translate(93,565)" pointer-events="none">
+    <ellipse cx="0" cy="14" rx="38" ry="18" fill="#0a4060" opacity=".85"/>
+    <ellipse cx="0" cy="14" rx="36" ry="16" fill="none" stroke="#2888a8" stroke-width="1" opacity=".5"/>
+    <path d="M-22,12 Q-10,9 0,12 Q10,15 22,12" stroke="#60c0e0" stroke-width="1" fill="none" opacity=".5"/>
+    <ellipse cx="0" cy="9" rx="10" ry="7" fill="#ffe880" opacity=".9"/>
+    <circle cx="0" cy="3" r="5.5" fill="#ffe880" opacity=".9"/>
+    <path d="M5.5,3 L10,3 L8,5.5Z" fill="#ff9040"/>
+    <circle cx="2" cy="2" r="1.3" fill="#222"/>
+    <circle cx="2.4" cy="1.6" r=".5" fill="#fff"/>
+    <ellipse cx="-24" cy="18" rx="7" ry="4" fill="#2a6820" opacity=".7"/>
+    <circle cx="-24" cy="14" r="2.5" fill="#ff80a0" opacity=".7"/>
+  </g>
+  <text x="93" y="613" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#70d8f0" pointer-events="none">🐾 Animal Pond</text>
+  <text x="93" y="626" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#40b0d0" opacity=".85" pointer-events="none">Collect</text>
+</g>
 
-          <!-- SAGE'S CHAMBER → coach -->
-          <g class="map-region" data-section="coach" data-label="Sage's Chamber">
-            <ellipse cx="358" cy="330" rx="40" ry="36" fill="url(#gCave)" stroke="#6060a0" stroke-width="1.5" opacity=".8"/>
-            <circle cx="358" cy="330" r="16" fill="#1a1a4a" stroke="#8080c0" stroke-width="1.5" opacity=".85"/>
-            <ellipse cx="353" cy="324" rx="4" ry="3" fill="#c0c0ff" opacity=".3"/>
-            <circle cx="358" cy="330" r="10" fill="none" stroke="#7070c8" stroke-width="1" opacity=".4"/>
-            <circle cx="356" cy="328" r="3" fill="#e0e0ff" opacity=".5" filter="url(#mapGlow)"/>
-            <circle cx="358" cy="320" r="2" fill="#a0d0ff" opacity=".7" filter="url(#mapGlow)"/>
-            <text x="358" y="373" text-anchor="middle" fill="#a0a0e0" font-size="10.5" font-family="serif" font-weight="bold" opacity=".95">🔭 Sage's Chamber</text>
-            <text x="358" y="384" text-anchor="middle" fill="#8080c0" font-size="8.5" font-family="serif" opacity=".8">AI Coach</text>
-          </g>
+<g class="map-region" data-section="game" data-label="Puzzle Cavern">
+  <polygon points="200,532 269,535 333,538 400,535 400,640 205,640" fill="url(#gCavern)"/>
+  <g transform="translate(295,558)" pointer-events="none">
+    <path d="M-32,46 Q-32,10 0,10 Q32,10 32,46" fill="#1a0e30" opacity=".85" stroke="#5040a0" stroke-width="1.5"/>
+    <polygon points="0,16 10,26 0,38 -10,26" fill="#9060e0" opacity=".85"/>
+    <polygon points="0,18 8,26 0,36 -8,26" fill="#b890f8" opacity=".8"/>
+    <polygon points="0,16 10,26 0,22 -10,26" fill="#c0a0ff" opacity=".6"/>
+    <ellipse cx="0" cy="36" rx="16" ry="6" fill="#6040b0" opacity=".25"/>
+    <polygon points="-22,10 -18,10 -20,20" fill="#4040a0" opacity=".6"/>
+    <polygon points="-8,10 -4,10 -6,18" fill="#4040a0" opacity=".5"/>
+    <polygon points="6,10 10,10 8,16" fill="#4040a0" opacity=".55"/>
+    <polygon points="20,10 24,10 22,22" fill="#4040a0" opacity=".6"/>
+  </g>
+  <text x="300" y="613" text-anchor="middle" font-family="Georgia,serif" font-size="10" font-weight="bold" fill="#c098f8" pointer-events="none">🎮 Puzzle Cavern</text>
+  <text x="300" y="626" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#9070d0" opacity=".85" pointer-events="none">Mini-Game</text>
+</g>
 
-          <!-- PUZZLE CAVERN → game -->
-          <g class="map-region" data-section="game" data-label="Puzzle Cavern">
-            <ellipse cx="100" cy="468" rx="63" ry="48" fill="url(#gCave)" stroke="#5050a0" stroke-width="1.5" opacity=".85"/>
-            <path d="M68 488 Q100 458 132 488 Q125 505 100 508 Q75 505 68 488 Z" fill="#1a1a3a" opacity=".8"/>
-            <path d="M72 488 Q100 462 128 488" fill="none" stroke="#6060a0" stroke-width="1.5" opacity=".6"/>
-            <polygon points="100,472 108,480 100,488 92,480" fill="#7060e0" opacity=".8"/>
-            <polygon points="100,474 106,480 100,486 94,480" fill="#a090ff" opacity=".7"/>
-            <ellipse cx="100" cy="484" rx="22" ry="12" fill="#5050a0" opacity=".3" filter="url(#mapSoftGlow)"/>
-            <circle cx="100" cy="472" r="3" fill="#a090ff" opacity=".6" filter="url(#mapGlow)"/>
-            <text x="100" y="522" text-anchor="middle" fill="#9080d0" font-size="10.5" font-family="serif" font-weight="bold" opacity=".95">🎮 Puzzle Cavern</text>
-            <text x="100" y="533" text-anchor="middle" fill="#7060b0" font-size="8.5" font-family="serif" opacity=".8">Mini-Game</text>
-          </g>
+<!-- Dot texture -->
+<rect width="400" height="640" fill="url(#mapDots)" pointer-events="none"/>
 
-          <!-- Map border -->
-          <rect x="4" y="4" width="392" height="552" rx="17" fill="none" stroke="#8860c0" stroke-width="1.5" opacity=".25"/>
-          <rect x="8" y="8" width="384" height="544" rx="15" fill="none" stroke="#6640a0" stroke-width=".8" opacity=".18"/>
-          <!-- Animated sparkle dots on paths -->
-          <circle r="3" fill="#ffe88a" opacity=".8" filter="url(#mapGlow)"><animateMotion dur="8s" repeatCount="indefinite" path="M130 230 Q90 200 80 160"/></circle>
-          <circle r="2.5" fill="#c8b8ff" opacity=".7" filter="url(#mapGlow)"><animateMotion dur="10s" repeatCount="indefinite" path="M185 365 Q235 355 270 340"/></circle>
-          <circle r="2.5" fill="#88ffaa" opacity=".6" filter="url(#mapGlow)"><animateMotion dur="12s" repeatCount="indefinite" path="M120 255 Q80 290 75 340"/></circle>
-        </svg>
+<!-- Territory borders -->
+<g stroke="rgba(255,255,255,.2)" stroke-width="1.4" fill="none" pointer-events="none" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="133,0 130,105 133,210 130,315 133,420 130,535"/>
+  <polyline points="267,0 270,105 267,210 270,315 267,420 269,535"/>
+  <polyline points="0,210 68,213 133,210 200,207 267,210 333,213 400,210"/>
+  <polyline points="0,420 67,417 133,420 200,423 267,420 333,417 400,420"/>
+  <polyline points="0,535 65,538 130,535 200,532 269,535 333,538 400,535"/>
+  <line x1="200" y1="532" x2="205" y2="640"/>
+</g>
+
+<!-- Map border -->
+<rect x="1" y="1" width="398" height="638" fill="none" stroke="rgba(200,160,255,.28)" stroke-width="2" rx="3"/>
+
+<!-- Animated path travellers -->
+<circle r="3" fill="#ffe870" opacity=".9" filter="url(#mapGlow)"><animateMotion dur="9s" repeatCount="indefinite" path="M133,210 Q65,250 0,420"/></circle>
+<circle r="2.5" fill="#d4b8ff" opacity=".8" filter="url(#mapGlow)"><animateMotion dur="11s" repeatCount="indefinite" path="M200,207 Q200,315 200,423"/></circle>
+<circle r="2.5" fill="#80d0f0" opacity=".8" filter="url(#mapGlow)"><animateMotion dur="7s" repeatCount="indefinite" path="M133,420 Q90,478 65,538"/></circle>
+
+<!-- Compass rose -->
+<g transform="translate(370,610)" opacity=".35" pointer-events="none">
+  <circle cx="0" cy="0" r="14" fill="none" stroke="#c8b0a0" stroke-width=".8"/>
+  <polygon points="0,-12 -3,-2 3,-2" fill="#e8d0b0"/><polygon points="0,12 -3,2 3,2" fill="#a09080"/>
+  <polygon points="-12,0 -2,-3 -2,3" fill="#a09080"/><polygon points="12,0 2,-3 2,3" fill="#a09080"/>
+  <circle cx="0" cy="0" r="2" fill="#e8d0b0"/>
+  <text x="0" y="-16" text-anchor="middle" font-size="6" fill="#c8b0a0" font-family="serif">N</text>
+</g>
+
+<!-- Realm label -->
+<text x="200" y="636" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="rgba(200,160,255,.38)" font-style="italic">✦ The Realm of NeuroNav ✦</text>
+</svg>
         <!-- Location tooltip -->
         <div class="map-tooltip" id="mapTooltip"></div>
       </div>
@@ -3109,32 +3143,7 @@ body.reduce-motion .bg-orb{display:none}
     </div>
 
     <!-- Account -->
-    
-    <!-- PWA INSTALL STATUS -->
-    <div class="section-label">📦 Install App</div>
-    <div class="card card-body" style="margin-bottom:14px">
-      <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px">
-        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0">🧠</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:.9rem;font-weight:700;color:var(--text)">NeuroNav Desktop App</div>
-          <div id="installStatus" style="font-size:.78rem;color:var(--text-dim);margin-top:2px">Checking...</div>
-        </div>
-      </div>
-      <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:12px;line-height:1.6">
-        Install NeuroNav as a standalone app on your computer. Works offline, gets its own window, and appears in your taskbar/start menu.
-      </p>
-      <div id="installActions" style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn btn-primary" id="settingsInstallBtn" onclick="window.neuronavPWA?.triggerInstall() || showManualInstallHelpFallback()" style="flex:1;min-width:140px">
-          ⬇️ Install Now
-        </button>
-        <button class="btn btn-secondary btn-sm" onclick="window.neuronavPWA?.showManualInstallHelp() || showManualInstallHelpFallback()" style="flex:1;min-width:140px">
-          ❓ How to install
-        </button>
-      </div>
-      <div id="installHelp" style="display:none;margin-top:12px;padding:12px;background:var(--bg-elevated);border-radius:var(--radius-sm);border:1px solid var(--border);font-size:.8rem;color:var(--text-muted);line-height:1.7">
-      </div>
-    </div>
-<div class="section-label">👤 Account</div>
+    <div class="section-label">👤 Account</div>
     <div class="card card-body" style="margin-bottom:10px">
       <div style="font-size:.85rem;color:var(--text-secondary)" id="setAccountInfo"></div>
     </div>
@@ -7179,25 +7188,5 @@ function renderSettings(){
 if (currentUser) { launchApp(); }
 // else: auth screen is visible by default — user must sign in/register/guest
 </script>
-
-<!-- PWA Installation & Service Worker -->
-
-<script>
-// Fallback for install button clicks when pwa.js hasn't loaded yet
-function showManualInstallHelpFallback() {
-  if (window.neuronavPWA && window.neuronavPWA.showManualInstallHelp) {
-    window.neuronavPWA.showManualInstallHelp();
-  } else {
-    alert('To install NeuroNav:
-
-Chrome/Edge: Click ⋮ menu → Cast, save and share → Install page as app
-
-Safari: Share → Add to Home Screen
-
-This lets you use NeuroNav offline with its own window!');
-  }
-}
-</script>
-<script src="pwa.js"></script>
 </body>
 </html>
