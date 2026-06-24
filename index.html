@@ -835,6 +835,52 @@ body.reduce-motion .bg-orb{display:none}
 .sound-wave-bar:nth-child(4){animation-delay:.1s;height:70%}
 @keyframes swave{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
 
+/* ===== HERO SHEET ===== */
+.hero-banner{border-radius:var(--radius-lg);padding:24px 20px 20px;margin-bottom:14px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:6px;background:var(--bg-card);border:1px solid var(--border)}
+.hero-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,58,237,.1),rgba(236,72,153,.06));pointer-events:none}
+.hero-banner>*{position:relative;z-index:1}
+.hero-portrait{width:110px;height:110px;display:block;filter:drop-shadow(0 6px 18px rgba(0,0,0,.5));margin:0 auto 10px}
+.hero-class-name{font-size:1.05rem;font-weight:800;letter-spacing:-.3px;text-align:center}
+.hero-level-row{display:flex;align-items:center;gap:8px;justify-content:center}
+.hero-level-badge{font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:12px;letter-spacing:.04em;text-transform:uppercase}
+.hero-title-text{font-size:.78rem;color:var(--text-muted);font-style:italic}
+.hero-xp-bar-wrap{width:100%;background:rgba(0,0,0,.35);border-radius:8px;height:10px;overflow:hidden;margin:6px 0 2px}
+.hero-xp-bar-fill{height:100%;border-radius:8px;transition:width .5s ease}
+.hero-xp-label{font-size:.65rem;color:var(--text-dim);text-align:center;font-family:"JetBrains Mono",monospace}
+.hero-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.hero-stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:11px 12px}
+.hero-stat-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.hero-stat-name{font-size:.72rem;font-weight:700;display:flex;align-items:center;gap:5px}
+.hero-stat-val{font-size:.8rem;font-weight:800;font-family:"JetBrains Mono",monospace}
+.hero-stat-bar{height:5px;border-radius:4px;background:var(--bg-elevated);overflow:hidden}
+.hero-stat-fill{height:100%;border-radius:4px;transition:width .6s ease}
+.hero-stat-card.boosted{border-color:var(--secondary)}
+.hero-abilities-section{margin-bottom:14px}
+.hero-abilities-title{font-size:.75rem;font-weight:800;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
+.hero-ability-row{display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:8px;transition:var(--t)}
+.hero-ability-row.unlocked{border-color:var(--primary)}
+.hero-ability-row.locked{opacity:.45}
+.hero-ability-ico{font-size:1.3rem;flex-shrink:0;width:32px;text-align:center}
+.hero-ability-info{flex:1;min-width:0}
+.hero-ability-name{font-size:.82rem;font-weight:700}
+.hero-ability-desc{font-size:.68rem;color:var(--text-dim);margin-top:1px}
+.hero-ability-badge{font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:10px;flex-shrink:0;white-space:nowrap}
+.hero-ability-badge.unlocked-badge{background:rgba(124,58,237,.25);color:var(--primary-light)}
+.hero-ability-badge.locked-badge{background:var(--bg-elevated);color:var(--text-dim)}
+.hero-class-picker{margin-bottom:16px}
+.hero-class-picker-title{font-size:.9rem;font-weight:700;color:var(--text-secondary);margin-bottom:12px;text-align:center}
+.hero-class-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hero-class-card{background:var(--bg-card);border:2px solid var(--border);border-radius:var(--radius);padding:14px 12px;cursor:pointer;text-align:center;transition:var(--t);-webkit-tap-highlight-color:transparent}
+.hero-class-card:hover{border-color:var(--primary-light)}
+.hero-class-card:active{transform:translateY(-2px)}
+.hero-class-card.selected{border-color:var(--primary);background:rgba(124,58,237,.08);box-shadow:0 0 20px rgba(124,58,237,.15)}
+.hero-class-emoji{font-size:2rem;display:block;margin-bottom:6px}
+.hero-class-card-name{font-size:.82rem;font-weight:800;margin-bottom:3px}
+.hero-class-card-desc{font-size:.65rem;color:var(--text-dim);line-height:1.4}
+.hero-class-wide{grid-column:1/-1}
+.hero-change-btn{font-size:.7rem;color:var(--text-dim);background:none;border:1px solid var(--border);border-radius:10px;padding:3px 10px;cursor:pointer;font-family:"Syne",sans-serif;margin-top:6px;transition:var(--t)}
+.hero-change-btn:hover{border-color:var(--primary);color:var(--primary-light)}
+
 /* ===== SENSORY CHECK-IN ===== */
 .sensory-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
 .sensory-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:13px}
@@ -1319,6 +1365,7 @@ body.reduce-motion .bg-orb{display:none}
 .confirm-modal-actions .btn{flex:1}
 </style>
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute">
@@ -1410,6 +1457,7 @@ body.reduce-motion .bg-orb{display:none}
       <span class="drawer-section-title">Core</span>
       <div class="drawer-grid">
         <button class="drawer-item" id="di-quests" onclick="showSection('quests');closeDrawer()"><span class="di-ico">📋</span><span class="di-label">Quests</span></button>
+        <button class="drawer-item" id="di-hero" onclick="showSection('hero');closeDrawer()"><span class="di-ico">🦸</span><span class="di-label">Hero Sheet</span></button>
         <button class="drawer-item" id="di-todo" onclick="showSection('todo');closeDrawer()"><span class="di-ico">✅</span><span class="di-label">To-Do</span></button>
         <button class="drawer-item" id="di-notes" onclick="showSection('notes');closeDrawer()"><span class="di-ico">📝</span><span class="di-label">Notes</span></button>
         <button class="drawer-item" id="di-habits" onclick="showSection('habits');closeDrawer()"><span class="di-ico">🔁</span><span class="di-label">Habits</span></button>
@@ -1818,7 +1866,12 @@ body.reduce-motion .bg-orb{display:none}
     </div>
   </div>
 
-  <!-- QUESTS -->
+    <!-- HERO SHEET -->
+  <div class="section" id="sec-hero">
+    <div id="heroSheetWrap"></div>
+  </div>
+
+<!-- QUESTS -->
   <div class="section" id="sec-quests">
     <div class="hero-card">
       <h2>📋 Daily Quest Board</h2>
@@ -3304,6 +3357,17 @@ function loadState() {
     pondPets:S.get('pondPets',{}),
     routines:S.get('routines',DEFAULT_ROUTINES),
   };
+    heroClass:S.get('heroClass',null),
+    heroClassChanged:S.get('heroClassChanged',null),
+    rsdEntries:S.get('rsdEntries',[]),
+    sensoryHistory:S.get('sensoryHistory',[]),
+    breathCount:S.get('breathCount',0),
+    regToolsUsed:S.get('regToolsUsed',{}),
+    breakdownHistory:S.get('breakdownHistory',[]),
+    resetCount:S.get('resetCount',0),
+    thoughtDumps:S.get('thoughtDumps',[]),
+    bodyCheckins:S.get('bodyCheckins',[]),
+
 }
 function save(){Object.keys(state).forEach(k=>S.set(k,state[k]));}
 
@@ -3430,7 +3494,7 @@ function checkDailyReset(){
 }
 
 // ===== STATS =====
-const PAGE_TITLES={map:'🗺️ World Map',quests:'📋 Quests',notes:'📝 Notes',habits:'🔁 Habits',stats:'📊 Stats',calendar:'📅 Calendar',todo:'✅ To-Do',dopamine:'⚡ Dopamine',timer:'⏱️ Focus',wins:'🏆 Wins',reset:'🔄 Reset',strategies:'📖 Strategies',game:'🎮 Game',pond:'🐾 Animal Pond',coach:'🤖 Coach',routines:'🌅 Routines',sensory:'🌡️ Sensory',bodydouble:'👥 Body Double',thoughtdump:'🧹 Dump',breakdown:'🔬 Breakdown',rsd:'💜 RSD Vault',regulate:'🧰 Regulate',nownext:'🎯 Now/Next/Later',bodycheckin:'🫀 Body Check-in',stim:'🌀 Stim Corner',toolbox:'🧭 Time &amp; Energy',nutrition:'🥗 Nutrition',insights:'📈 Insights',settings:'⚙️ Settings'};
+const PAGE_TITLES={map:'🗺️ World Map',quests:'📋 Quests',notes:'📝 Notes',habits:'🔁 Habits',stats:'📊 Stats',calendar:'📅 Calendar',todo:'✅ To-Do',dopamine:'⚡ Dopamine',timer:'⏱️ Focus',wins:'🏆 Wins',reset:'🔄 Reset',strategies:'📖 Strategies',game:'🎮 Game',pond:'🐾 Animal Pond',coach:'🤖 Coach',routines:'🌅 Routines',sensory:'🌡️ Sensory',bodydouble:'👥 Body Double',thoughtdump:'🧹 Dump',breakdown:'🔬 Breakdown',rsd:'💜 RSD Vault',regulate:'🧰 Regulate',nownext:'🎯 Now/Next/Later',bodycheckin:'🫀 Body Check-in',stim:'🌀 Stim Corner',toolbox:'🧭 Time &amp; Energy',nutrition:'🥗 Nutrition',insights:'📈 Insights',settings:'⚙️ Settings'hero:'🦸 Hero Sheet',};
 const TAB_IDS=['quests','timer','regulate','stats'];
 function updateStats(){
   const x=state.xp,l=state.level,s=state.streak;
@@ -7249,6 +7313,421 @@ if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.
   const installedLabel = document.getElementById('settingsInstalledLabel');
   if (installedLabel) installedLabel.style.display = 'inline';
 }
+
+// ===== HERO SHEET =====
+const HERO_CLASSES = [
+  {key:'focus_mage',name:'Focus Mage',emoji:'🧙‍♂️',color:'#7c3aed',desc:'Masters of deep work and sustained attention. Your power grows with every focused session.',
+   stats:[
+     {key:'focus',name:'⚡ Focus',color:'#7c3aed',max:100},
+     {key:'discipline',name:'🛡️ Discipline',color:'#6366f1',max:100},
+     {key:'creativity',name:'💡 Creativity',color:'#ec4899',max:100},
+     {key:'energy',name:'🔋 Energy',color:'#10b981',max:100},
+   ],
+   abilities:[
+     {id:'fm_1',name:'Pomodoro Mastery',desc:'Complete 5 timer sessions in one day',ico:'⏱️',req:5,track:'timerSessions'},
+     {id:'fm_2',name:'Flow State',desc:'Complete a 90-minute focus session',ico:'🌊',req:90,track:'timerMinutes_single'},
+     {id:'fm_3',name:'Task Slayer',desc:'Complete 20 to-dos total',ico:'⚔️',req:20,track:'totalTodos'},
+     {id:'fm_4',name:'Deep Diver',desc:'Log 500 total focus minutes',ico:'🤿',req:500,track:'timerMinutes'},
+     {id:'fm_5',name:'Legendary Focus',desc:'Reach Level 10',ico:'👑',req:10,track:'level'},
+   ]
+  },
+  {key:'habit_knight',name:'Habit Knight',emoji:'🛡️',color:'#10b981',desc:'A disciplined guardian of daily routines. Your armor is built one streak at a time.',
+   stats:[
+     {key:'consistency',name:'🔁 Consistency',color:'#10b981',max:100},
+     {key:'resilience',name:'💪 Resilience',color:'#f59e0b',max:100},
+     {key:'structure',name:'🏗️ Structure',color:'#06b6d4',max:100},
+     {key:'vitality',name:'❤️ Vitality',color:'#ef4444',max:100},
+   ],
+   abilities:[
+     {id:'hk_1',name:'First Steps',desc:'Complete your first routine',ico:'🌅',req:1,track:'routinesCompleted'},
+     {id:'hk_2',name:'Streak Keeper',desc:'Maintain a 7-day streak',ico:'🔥',req:7,track:'streak'},
+     {id:'hk_3',name:'Habit Forge',desc:'Track 5 habits for 7 days',ico:'🔨',req:5,track:'habitCount'},
+     {id:'hk_4',name:'Iron Will',desc:'Complete all quests 3 days in a row',ico:'🛡️',req:3,track:'allQuestsDays'},
+     {id:'hk_5',name:'Champion Knight',desc:'Reach a 30-day streak',ico:'👑',req:30,track:'streak'},
+   ]
+  },
+  {key:'mind_wanderer',name:'Mind Wanderer',emoji:'🌌',color:'#06b6d4',desc:'An explorer of thoughts and emotions. Your journey is inward, mapping the landscape of your mind.',
+   stats:[
+     {key:'awareness',name:'🧠 Awareness',color:'#06b6d4',max:100},
+     {key:'calm',name:'🌊 Calm',color:'#14b8a6',max:100},
+     {key:'insight',name:'🔮 Insight',color:'#a78bfa',max:100},
+     {key:'expression',name:'✍️ Expression',color:'#ec4899',max:100},
+   ],
+   abilities:[
+     {id:'mw_1',name:'Emotional Cartographer',desc:'Log mood for 7 days',ico:'🗺️',req:7,track:'moodDays'},
+     {id:'mw_2',name:'Thought Keeper',desc:'Write 10 notes',ico:'📝',req:10,track:'totalNotes'},
+     {id:'mw_3',name:'RSD Shield',desc:'Log 5 RSD entries with reframes',ico:'💜',req:5,track:'rsdEntries'},
+     {id:'mw_4',name:'Sensory Sage',desc:'Log 10 sensory check-ins',ico:'🌡️',req:10,track:'sensoryLogs'},
+     {id:'mw_5',name:'Enlightened',desc:'Complete all Mind Wanderer abilities',ico:'👑',req:5,track:'mwAbilities'},
+   ]
+  },
+  {key:'productivity_alchemist',name:'Productivity Alchemist',emoji:'⚗️',color:'#f59e0b',desc:'Transforms chaos into order. You craft systems that make ADHD your superpower.',
+   stats:[
+     {key:'organization',name:'📦 Organization',color:'#f59e0b',max:100},
+     {key:'planning',name:'📋 Planning',color:'#d97706',max:100},
+     {key:'execution',name:'🎯 Execution',color:'#7c3aed',max:100},
+     {key:'adaptability',name:'🔄 Adaptability',color:'#10b981',max:100},
+   ],
+   abilities:[
+     {id:'pa_1',name:'Task Breaker',desc:'Break down 10 tasks',ico:'🔬',req:10,track:'breakdowns'},
+     {id:'pa_2',name:'Weekly Reset',desc:'Complete 3 weekly resets',ico:'🔄',req:3,track:'resets'},
+     {id:'pa_3',name:'Calendar Master',desc:'Add 10 events',ico:'📅',req:10,track:'totalEvents'},
+     {id:'pa_4',name:'Win Collector',desc:'Log 25 wins',ico:'🏆',req:25,track:'totalWins'},
+     {id:'pa_5',name:'Master Alchemist',desc:'Reach Level 15',ico:'👑',req:15,track:'level'},
+   ]
+  },
+  {key:'wellness_druid',name:'Wellness Druid',emoji:'🌿',color:'#14b8a6',desc:'A guardian of body and mind. You nurture yourself so you can nurture your goals.',
+   stats:[
+     {key:'nourishment',name:'🍎 Nourishment',color:'#14b8a6',max:100},
+     {key:'movement',name:'🏃 Movement',color:'#10b981',max:100},
+     {key:'rest',name:'😴 Rest',color:'#6366f1',max:100},
+     {key:'balance',name:'⚖️ Balance',color:'#f59e0b',max:100},
+   ],
+   abilities:[
+     {id:'wd_1',name:'Hydration Keeper',desc:'Track water for 7 days',ico:'💧',req:7,track:'waterDays'},
+     {id:'wd_2',name:'Body Listener',desc:'Log 10 body check-ins',ico:'🫀',req:10,track:'bodyCheckins'},
+     {id:'wd_3',name:'Regulation Sage',desc:'Use 5 different regulation tools',ico:'🧰',req:5,track:'regTools'},
+     {id:'wd_4',name:'Meal Planner',desc:'Plan 7 days of meals',ico:'🥗',req:7,track:'mealPlanDays'},
+     {id:'wd_5',name:'Druid Elder',desc:'Complete all Wellness Druid abilities',ico:'👑',req:5,track:'wdAbilities'},
+   ]
+  },
+];
+
+const HERO_TITLES = [
+  {min:1,title:'Novice Adventurer'},
+  {min:3,title:'Apprentice'},
+  {min:5,title:'Journeyman'},
+  {min:8,title:'Adept'},
+  {min:12,title:'Expert'},
+  {min:16,title:'Master'},
+  {min:20,title:'Grandmaster'},
+  {min:25,title:'Legend'},
+  {min:30,title:'Mythic Hero'},
+  {min:40,title:'Transcendent'},
+];
+
+function getHeroTitle(level) {
+  for (let i = HERO_TITLES.length - 1; i >= 0; i--) {
+    if (level >= HERO_TITLES[i].min) return HERO_TITLES[i].title;
+  }
+  return HERO_TITLES[0].title;
+}
+
+function getHeroClass() {
+  const key = state.heroClass;
+  if (!key) return null;
+  return HERO_CLASSES.find(c => c.key === key) || null;
+}
+
+function getHeroStatValue(statKey) {
+  const hc = getHeroClass();
+  if (!hc) return 0;
+  const stat = hc.stats.find(s => s.key === statKey);
+  if (!stat) return 0;
+
+  // Calculate based on app usage
+  let val = 10; // base
+  switch(statKey) {
+    case 'focus':
+      val = Math.min(stat.max, 10 + (state.timerMinutes || 0) * 0.3 + (state.timerSessions || 0) * 2);
+      break;
+    case 'discipline':
+      val = Math.min(stat.max, 10 + (state.streak || 0) * 3 + (state.completedQuests?.length || 0) * 2);
+      break;
+    case 'creativity':
+      val = Math.min(stat.max, 10 + (state.notes?.length || 0) * 3 + (state.wins?.length || 0) * 1);
+      break;
+    case 'energy':
+      val = Math.min(stat.max, 10 + (state.timerSessions || 0) * 1.5 + (state.xp || 0) * 0.05);
+      break;
+    case 'consistency':
+      val = Math.min(stat.max, 10 + (state.streak || 0) * 2.5 + (state.habits?.length || 0) * 3);
+      break;
+    case 'resilience':
+      val = Math.min(stat.max, 10 + (state.streak || 0) * 1.5 + (state.overwhelmLog?.length || 0) * 2);
+      break;
+    case 'structure':
+      val = Math.min(stat.max, 10 + (state.routines?.length || 0) * 5 + (state.events?.length || 0) * 1);
+      break;
+    case 'vitality':
+      val = Math.min(stat.max, 10 + (state.waterCount || 0) * 2 + (state.mealLog ? Object.keys(state.mealLog).length : 0) * 3);
+      break;
+    case 'awareness':
+      val = Math.min(stat.max, 10 + (state.moodHistory?.length || 0) * 5 + (state.sensoryHistory?.length || 0) * 3);
+      break;
+    case 'calm':
+      val = Math.min(stat.max, 10 + (state.timerSessions || 0) * 1 + (state.breathCount || 0) * 0.5);
+      break;
+    case 'insight':
+      val = Math.min(stat.max, 10 + (state.notes?.length || 0) * 2 + (state.rsdEntries?.length || 0) * 3);
+      break;
+    case 'expression':
+      val = Math.min(stat.max, 10 + (state.wins?.length || 0) * 1.5 + (state.thoughtDumps?.length || 0) * 2);
+      break;
+    case 'organization':
+      val = Math.min(stat.max, 10 + (state.todos?.filter(t=>t.done).length || 0) * 2 + (state.notes?.length || 0) * 1);
+      break;
+    case 'planning':
+      val = Math.min(stat.max, 10 + (state.events?.length || 0) * 2 + (state.mealPlan ? 10 : 0));
+      break;
+    case 'execution':
+      val = Math.min(stat.max, 10 + (state.completedQuests?.length || 0) * 3 + (state.todos?.filter(t=>t.done).length || 0) * 1.5);
+      break;
+    case 'adaptability':
+      val = Math.min(stat.max, 10 + (state.dopamineUses ? Object.keys(state.dopamineUses).length : 0) * 5 + (state.overwhelmLog?.length || 0) * 2);
+      break;
+    case 'nourishment':
+      val = Math.min(stat.max, 10 + (state.waterCount || 0) * 1.5 + (state.mealLog ? Object.keys(state.mealLog).length : 0) * 2);
+      break;
+    case 'movement':
+      val = Math.min(stat.max, 10 + (state.timerMinutes || 0) * 0.2 + (state.bodyCheckins?.length || 0) * 2);
+      break;
+    case 'rest':
+      val = Math.min(stat.max, 10 + (state.streak || 0) * 1 + (state.breathCount || 0) * 0.3);
+      break;
+    case 'balance':
+      val = Math.min(stat.max, 10 + (state.moodHistory?.length || 0) * 2 + (state.sensoryHistory?.length || 0) * 2);
+      break;
+  }
+  return Math.round(val);
+}
+
+function getAbilityProgress(ability) {
+  let current = 0;
+  switch(ability.track) {
+    case 'timerSessions': current = state.timerSessions || 0; break;
+    case 'timerMinutes': current = state.timerMinutes || 0; break;
+    case 'timerMinutes_single': 
+      current = state.timerMinutes >= 90 ? 90 : 0; 
+      break;
+    case 'totalTodos': current = state.todos?.filter(t=>t.done).length || 0; break;
+    case 'level': current = state.level || 1; break;
+    case 'streak': current = state.streak || 0; break;
+    case 'routinesCompleted': 
+      current = (state.routines || []).filter(r => {
+        const today = new Date().toISOString().slice(0,10);
+        return r.log && r.log[today];
+      }).length;
+      break;
+    case 'habitCount': current = state.habits?.length || 0; break;
+    case 'allQuestsDays': 
+      // Simplified: count days with all quests done
+      current = state.streak || 0; 
+      break;
+    case 'moodDays': current = Object.keys(state.moodLog || {}).length; break;
+    case 'totalNotes': current = state.notes?.length || 0; break;
+    case 'rsdEntries': current = state.rsdEntries?.length || 0; break;
+    case 'sensoryLogs': current = state.sensoryHistory?.length || 0; break;
+    case 'mwAbilities': 
+      // Count unlocked mind wanderer abilities
+      current = countUnlockedAbilities('mind_wanderer');
+      break;
+    case 'breakdowns': current = state.breakdownHistory?.length || 0; break;
+    case 'resets': current = state.resetCount || 0; break;
+    case 'totalEvents': current = state.events?.length || 0; break;
+    case 'totalWins': current = state.wins?.length || 0; break;
+    case 'waterDays': current = Object.keys(state.waterLog || {}).length; break;
+    case 'bodyCheckins': current = state.bcLog?.length || 0; break;
+    case 'regTools': current = state.regToolsUsed ? Object.keys(state.regToolsUsed).length : 0; break;
+    case 'mealPlanDays': 
+      current = state.mealPlan ? 7 : 0;
+      break;
+    case 'wdAbilities':
+      current = countUnlockedAbilities('wellness_druid');
+      break;
+    default: current = 0;
+  }
+  return { current, target: ability.req, pct: Math.min(100, Math.round((current / ability.req) * 100)) };
+}
+
+function countUnlockedAbilities(classKey) {
+  const hc = HERO_CLASSES.find(c => c.key === classKey);
+  if (!hc) return 0;
+  let count = 0;
+  hc.abilities.forEach(ab => {
+    const prog = getAbilityProgress(ab);
+    if (prog.pct >= 100) count++;
+  });
+  return count;
+}
+
+function isAbilityUnlocked(ability) {
+  const prog = getAbilityProgress(ability);
+  return prog.pct >= 100;
+}
+
+function selectHeroClass(classKey) {
+  state.heroClass = classKey;
+  state.heroClassChanged = Date.now();
+  save();
+  renderHeroSheet();
+  toast('Class Chosen! ' + HERO_CLASSES.find(c=>c.key===classKey).emoji, 'Your journey as a ' + HERO_CLASSES.find(c=>c.key===classKey).name + ' begins!', '#7c3aed');
+  addXP(20);
+  confetti();
+}
+
+function renderHeroSheet() {
+  const wrap = document.getElementById('heroSheetWrap');
+  if (!wrap) return;
+
+  const hc = getHeroClass();
+
+  if (!hc) {
+    // Show class picker
+    wrap.innerHTML = `
+      <div class="hero-card" style="padding:18px 16px;margin-bottom:14px">
+        <h2 style="font-size:1.2rem;font-weight:800;margin-bottom:4px">🦸 Choose Your Class</h2>
+        <p style="color:var(--text-muted);font-size:.83rem">Pick a path that matches how you want to grow. You can change anytime.</p>
+      </div>
+      <div class="hero-class-picker">
+        <div class="hero-class-grid">
+          ${HERO_CLASSES.map(c => `
+            <div class="hero-class-card" onclick="selectHeroClass('${c.key}')">
+              <span class="hero-class-emoji">${c.emoji}</span>
+              <div class="hero-class-card-name">${c.name}</div>
+              <div class="hero-class-card-desc">${c.desc}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const level = state.level || 1;
+  const xp = state.xp || 0;
+  const xpInLevel = xp % 100;
+  const xpToNext = 100 - xpInLevel;
+  const title = getHeroTitle(level);
+
+  // Build portrait SVG
+  const portraitSVG = buildHeroPortrait(hc, level);
+
+  // Stats
+  const statsHtml = hc.stats.map(s => {
+    const val = getHeroStatValue(s.key);
+    const boosted = val >= 80;
+    return `
+      <div class="hero-stat-card${boosted ? ' boosted' : ''}">
+        <div class="hero-stat-top">
+          <span class="hero-stat-name">${s.name}</span>
+          <span class="hero-stat-val" style="color:${s.color}">${val}</span>
+        </div>
+        <div class="hero-stat-bar">
+          <div class="hero-stat-fill" style="width:${val}%;background:${s.color}"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Abilities
+  const abilitiesHtml = hc.abilities.map(ab => {
+    const unlocked = isAbilityUnlocked(ab);
+    const prog = getAbilityProgress(ab);
+    return `
+      <div class="hero-ability-row${unlocked ? ' unlocked' : ' locked'}">
+        <span class="hero-ability-ico">${ab.ico}</span>
+        <div class="hero-ability-info">
+          <div class="hero-ability-name">${ab.name}</div>
+          <div class="hero-ability-desc">${ab.desc}</div>
+          <div style="margin-top:4px;height:4px;background:var(--bg-elevated);border-radius:2px;overflow:hidden">
+            <div style="height:100%;border-radius:2px;background:${unlocked ? 'var(--success)' : 'var(--primary)'};width:${prog.pct}%;transition:width .6s ease"></div>
+          </div>
+          <div style="font-size:.6rem;color:var(--text-dim);margin-top:2px;font-family:'JetBrains Mono',monospace">${prog.current}/${prog.target}</div>
+        </div>
+        <span class="hero-ability-badge${unlocked ? ' unlocked-badge' : ' locked-badge'}">${unlocked ? '✓ Unlocked' : 'Locked'}</span>
+      </div>
+    `;
+  }).join('');
+
+  wrap.innerHTML = `
+    <div class="hero-banner" style="border-color:${hc.color}40">
+      <div class="hero-portrait">${portraitSVG}</div>
+      <div class="hero-class-name" style="color:${hc.color}">${hc.emoji} ${hc.name}</div>
+      <div class="hero-level-row">
+        <span class="hero-level-badge" style="background:${hc.color}25;color:${hc.color}">Level ${level}</span>
+        <span class="hero-title-text">${title}</span>
+      </div>
+      <div class="hero-xp-bar-wrap">
+        <div class="hero-xp-bar-fill" style="width:${xpInLevel}%;background:${hc.color}"></div>
+      </div>
+      <div class="hero-xp-label">${xpInLevel}/100 XP · ${xpToNext} to Level ${level+1}</div>
+      <button class="hero-change-btn" onclick="changeHeroClass()">🔄 Change Class</button>
+    </div>
+
+    <div class="section-label">📊 Core Stats</div>
+    <div class="hero-stats-grid">${statsHtml}</div>
+
+    <div class="hero-abilities-section">
+      <div class="hero-abilities-title">⚔️ Abilities · ${hc.abilities.filter(a=>isAbilityUnlocked(a)).length}/${hc.abilities.length} Unlocked</div>
+      ${abilitiesHtml}
+    </div>
+
+    <div class="card card-body" style="margin-bottom:10px">
+      <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-dim);margin-bottom:8px">💡 How Stats Work</div>
+      <div style="font-size:.8rem;color:var(--text-muted);line-height:1.6">
+        Your stats grow automatically as you use NeuroNav. Complete quests, track habits, log moods, and use tools — your hero sheet reflects your real progress. Abilities unlock when you hit their milestones.
+      </div>
+    </div>
+  `;
+}
+
+function buildHeroPortrait(hc, level) {
+  // Simple geometric portrait based on class
+  const colors = {
+    'focus_mage': {bg:'#7c3aed',accent:'#a78bfa',detail:'#ec4899'},
+    'habit_knight': {bg:'#10b981',accent:'#6ee7b7',detail:'#f59e0b'},
+    'mind_wanderer': {bg:'#06b6d4',accent:'#67e8f9',detail:'#a78bfa'},
+    'productivity_alchemist': {bg:'#f59e0b',accent:'#fcd34d',detail:'#7c3aed'},
+    'wellness_druid': {bg:'#14b8a6',accent:'#5eead4',detail:'#10b981'},
+  }[hc.key] || {bg:'#7c3aed',accent:'#a78bfa',detail:'#ec4899'};
+
+  const tier = level >= 30 ? 'mythic' : level >= 15 ? 'epic' : level >= 5 ? 'rare' : 'common';
+  const glowIntensity = tier === 'mythic' ? '0.6' : tier === 'epic' ? '0.4' : tier === 'rare' ? '0.25' : '0.1';
+  const borderColor = tier === 'mythic' ? '#f59e0b' : tier === 'epic' ? '#a78bfa' : tier === 'rare' ? '#7c3aed' : '#2a3160';
+
+  return `<svg viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+    <defs>
+      <radialGradient id="hpGrad" cx="50%" cy="45%" r="55%">
+        <stop offset="0%" style="stop-color:${colors.accent}"/>
+        <stop offset="100%" style="stop-color:${colors.bg}"/>
+      </radialGradient>
+      <filter id="hpGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <circle cx="55" cy="55" r="50" fill="url(#hpGrad)" stroke="${borderColor}" stroke-width="3" filter="url(#hpGlow)"/>
+    <circle cx="55" cy="55" r="44" fill="none" stroke="${colors.detail}" stroke-width="1" opacity="0.5"/>
+    <!-- Class symbol -->
+    <text x="55" y="68" text-anchor="middle" font-size="42" opacity="0.9">${hc.emoji}</text>
+    <!-- Level ring -->
+    <circle cx="55" cy="55" r="50" fill="none" stroke="${colors.detail}" stroke-width="2" stroke-dasharray="314" stroke-dashoffset="${314 - (314 * (level % 100 / 100))}" opacity="0.7" transform="rotate(-90 55 55)"/>
+    ${tier !== 'common' ? `<circle cx="55" cy="8" r="6" fill="${tier === 'mythic' ? '#f59e0b' : '#a78bfa'}" filter="url(#hpGlow)"/>` : ''}
+  </svg>`;
+}
+
+function changeHeroClass() {
+  state.heroClass = null;
+  save();
+  renderHeroSheet();
+  toast('Class Reset', 'Choose a new path for your hero.', '#7c3aed');
+}
+
+// Hook into showSection for hero
+const originalShowSection = showSection;
+showSection = function(id) {
+  originalShowSection(id);
+  if (id === 'hero') renderHeroSheet();
+};
+
+// Hook into addXP to refresh hero sheet if visible
+const originalAddXP = addXP;
+addXP = function(a) {
+  originalAddXP(a);
+  const heroSec = document.getElementById('sec-hero');
+  if (heroSec && heroSec.classList.contains('active')) {
+    renderHeroSheet();
+  }
+};
+
 </script>
 </body>
 </html>
