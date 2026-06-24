@@ -656,46 +656,6 @@ body.reduce-motion .bg-orb{display:none}
 .routine-step-edit-row{display:flex;gap:6px;margin-bottom:7px;align-items:center}
 .routine-step-edit-row input{flex:1;min-width:0}
 .routine-step-remove{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--bg-elevated);color:var(--danger);cursor:pointer;flex-shrink:0;font-size:.85rem}
-/* HERO SHEET */
-.hero-banner{border-radius:var(--radius-lg);padding:24px 20px 20px;margin-bottom:14px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;gap:6px}
-.hero-portrait{width:110px;height:110px;display:block;filter:drop-shadow(0 6px 18px rgba(0,0,0,.5));margin:0 auto 10px}
-.hero-class-name{font-size:1.05rem;font-weight:800;letter-spacing:-.3px;text-align:center}
-.hero-level-row{display:flex;align-items:center;gap:8px;justify-content:center}
-.hero-level-badge{font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:12px;letter-spacing:.04em;text-transform:uppercase}
-.hero-title-text{font-size:.78rem;color:var(--text-muted);font-style:italic}
-.hero-xp-bar-wrap{width:100%;background:rgba(0,0,0,.35);border-radius:8px;height:10px;overflow:hidden;margin:6px 0 2px}
-.hero-xp-bar-fill{height:100%;border-radius:8px;transition:width .5s ease}
-.hero-xp-label{font-size:.65rem;color:var(--text-dim);text-align:center;font-family:"JetBrains Mono",monospace}
-.hero-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.hero-stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:11px 12px}
-.hero-stat-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.hero-stat-name{font-size:.72rem;font-weight:700;display:flex;align-items:center;gap:5px}
-.hero-stat-val{font-size:.8rem;font-weight:800;font-family:"JetBrains Mono",monospace}
-.hero-stat-bar{height:5px;border-radius:4px;background:var(--bg-elevated);overflow:hidden}
-.hero-stat-fill{height:100%;border-radius:4px;transition:width .6s ease}
-.hero-stat-card.boosted{border-color:var(--secondary)}
-.hero-abilities-section{margin-bottom:14px}
-.hero-abilities-title{font-size:.75rem;font-weight:800;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px}
-.hero-ability-row{display:flex;align-items:center;gap:12px;padding:10px 12px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:8px;transition:var(--t)}
-.hero-ability-row.unlocked{border-color:var(--primary)}
-.hero-ability-row.locked{opacity:.45}
-.hero-ability-ico{font-size:1.3rem;flex-shrink:0;width:32px;text-align:center}
-.hero-ability-info{flex:1;min-width:0}
-.hero-ability-name{font-size:.82rem;font-weight:700}
-.hero-ability-desc{font-size:.68rem;color:var(--text-dim);margin-top:1px}
-.hero-ability-badge{font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:10px;flex-shrink:0;white-space:nowrap}
-.hero-ability-badge.unlocked-badge{background:rgba(124,58,237,.25);color:var(--primary-light)}
-.hero-ability-badge.locked-badge{background:var(--bg-elevated);color:var(--text-dim)}
-.hero-class-picker{margin-bottom:16px}
-.hero-class-picker-title{font-size:.9rem;font-weight:700;color:var(--text-secondary);margin-bottom:12px;text-align:center}
-.hero-class-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.hero-class-card{background:var(--bg-card);border:2px solid var(--border);border-radius:var(--radius);padding:14px 12px;cursor:pointer;text-align:center;transition:var(--t);-webkit-tap-highlight-color:transparent}
-.hero-class-card:active{transform:translateY(-2px)}
-.hero-class-emoji{font-size:2rem;display:block;margin-bottom:6px}
-.hero-class-card-name{font-size:.82rem;font-weight:800;margin-bottom:3px}
-.hero-class-card-desc{font-size:.65rem;color:var(--text-dim);line-height:1.4}
-.hero-class-wide{grid-column:1/-1}
-.hero-change-btn{font-size:.7rem;color:var(--text-dim);background:none;border:1px solid var(--border);border-radius:10px;padding:3px 10px;cursor:pointer;font-family:"Syne",sans-serif;margin-top:6px}
 /* EMERGENCY */
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s}
@@ -1358,6 +1318,7 @@ body.reduce-motion .bg-orb{display:none}
 .confirm-modal-actions{display:flex;gap:10px}
 .confirm-modal-actions .btn{flex:1}
 </style>
+<base target="_blank">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute">
@@ -1454,7 +1415,6 @@ body.reduce-motion .bg-orb{display:none}
         <button class="drawer-item" id="di-habits" onclick="showSection('habits');closeDrawer()"><span class="di-ico">🔁</span><span class="di-label">Habits</span></button>
         <button class="drawer-item" id="di-calendar" onclick="showSection('calendar');closeDrawer()"><span class="di-ico">📅</span><span class="di-label">Calendar</span></button>
         <button class="drawer-item" id="di-wins" onclick="showSection('wins');closeDrawer()"><span class="di-ico">🏆</span><span class="di-label">Wins</span></button>
-        <button class="drawer-item" id="di-hero" onclick="showSection('hero');closeDrawer()"><span class="di-ico">🦸</span><span class="di-label">Hero Sheet</span></button>
       </div>
     </div>
     <div class="drawer-section">
@@ -1553,6 +1513,7 @@ body.reduce-motion .bg-orb{display:none}
     </div>
     <div class="auth-divider">or</div>
     <button class="auth-btn" style="background:var(--bg-elevated);color:var(--text-secondary);box-shadow:none;border:1px solid var(--border)" onclick="authGuest()">Continue as Guest</button>
+    <button class="auth-btn" id="authInstallBtn" style="background:linear-gradient(135deg,var(--success),var(--teal));color:white;box-shadow:0 4px 16px rgba(16,185,129,.35);margin-top:10px;display:none" onclick="installApp()">📲 Install NeuroNav</button>
     <div class="auth-guests-note">
       <strong>Guest mode</strong> stores data on this device only.<br>
       Create an account to keep your streaks, wins and progress safe.
@@ -3115,11 +3076,6 @@ body.reduce-motion .bg-orb{display:none}
     <div class="card card-body" style="margin-bottom:10px" id="insWinsCard"></div>
   </div>
 
-  <!-- HERO -->
-  <div class="section" id="sec-hero">
-    <div id="heroSheetWrap"></div>
-  </div>
-
   <!-- SETTINGS -->
   <div class="section" id="sec-settings">
     <div class="hero-card">
@@ -3192,6 +3148,17 @@ body.reduce-motion .bg-orb{display:none}
     <div class="section-label">👤 Account</div>
     <div class="card card-body" style="margin-bottom:10px">
       <div style="font-size:.85rem;color:var(--text-secondary)" id="setAccountInfo"></div>
+    </div>
+    <div class="section-label">📲 App</div>
+    <div class="card card-body" style="margin-bottom:10px">
+      <div class="set-toggle-row" style="border:none;padding:8px 0">
+        <div class="set-toggle-text">
+          <div class="set-toggle-label">Install NeuroNav</div>
+          <div class="set-toggle-sub">Add to your home screen for offline access</div>
+        </div>
+        <button class="btn btn-primary btn-sm" id="settingsInstallBtn" onclick="installApp()" style="display:none">Install</button>
+        <span id="settingsInstalledLabel" style="font-size:.78rem;color:var(--success-light);font-weight:700;display:none">✓ Installed</span>
+      </div>
     </div>
   </div>
   <!-- BOTTOM TAB BAR -->
@@ -3335,7 +3302,6 @@ function loadState() {
     pondCollected:S.get('pondCollected',[]),
     shells:S.get('shells',0),
     pondPets:S.get('pondPets',{}),
-    heroClass:S.get('heroClass',null),
     routines:S.get('routines',DEFAULT_ROUTINES),
   };
 }
@@ -3421,6 +3387,7 @@ let aiConversation=[];
 let doneTodoCount=0;
 
 function init(){
+  loadState();
   checkDailyReset();
   if(!state.currentQuests) randomizeQuests(false);
   updateStats();renderQuests();renderDopamineMenu();renderWins();renderResetChecklist();renderStrategies('all');renderAchievements();
@@ -3463,7 +3430,7 @@ function checkDailyReset(){
 }
 
 // ===== STATS =====
-const PAGE_TITLES={map:'🗺️ World Map',quests:'📋 Quests',notes:'📝 Notes',habits:'🔁 Habits',stats:'📊 Stats',calendar:'📅 Calendar',todo:'✅ To-Do',dopamine:'⚡ Dopamine',timer:'⏱️ Focus',wins:'🏆 Wins',reset:'🔄 Reset',strategies:'📖 Strategies',game:'🎮 Game',pond:'🐾 Animal Pond',coach:'🤖 Coach',routines:'🌅 Routines',hero:'🦸 Hero Sheet',sensory:'🌡️ Sensory',bodydouble:'👥 Body Double',thoughtdump:'🧹 Dump',breakdown:'🔬 Breakdown',rsd:'💜 RSD Vault',regulate:'🧰 Regulate',nownext:'🎯 Now/Next/Later',bodycheckin:'🫀 Body Check-in',stim:'🌀 Stim Corner',toolbox:'🧭 Time &amp; Energy',nutrition:'🥗 Nutrition',insights:'📈 Insights',settings:'⚙️ Settings'};
+const PAGE_TITLES={map:'🗺️ World Map',quests:'📋 Quests',notes:'📝 Notes',habits:'🔁 Habits',stats:'📊 Stats',calendar:'📅 Calendar',todo:'✅ To-Do',dopamine:'⚡ Dopamine',timer:'⏱️ Focus',wins:'🏆 Wins',reset:'🔄 Reset',strategies:'📖 Strategies',game:'🎮 Game',pond:'🐾 Animal Pond',coach:'🤖 Coach',routines:'🌅 Routines',sensory:'🌡️ Sensory',bodydouble:'👥 Body Double',thoughtdump:'🧹 Dump',breakdown:'🔬 Breakdown',rsd:'💜 RSD Vault',regulate:'🧰 Regulate',nownext:'🎯 Now/Next/Later',bodycheckin:'🫀 Body Check-in',stim:'🌀 Stim Corner',toolbox:'🧭 Time &amp; Energy',nutrition:'🥗 Nutrition',insights:'📈 Insights',settings:'⚙️ Settings'};
 const TAB_IDS=['quests','timer','regulate','stats'];
 function updateStats(){
   const x=state.xp,l=state.level,s=state.streak;
@@ -3522,7 +3489,7 @@ function showSection(id){
   // Scroll content to top
   const scroll=document.getElementById('contentScroll');
   if(scroll)scroll.scrollTo({top:0,behavior:'smooth'});
-  if(id==='stats')renderStatsPage();
+  if(id==='stats'){loadState();renderStatsPage();}
   if(id==='habits')renderHabits();
   if(id==='timer')populateTimerTaskSelect();
   if(id==='sensory')renderSensoryHistory();
@@ -3539,7 +3506,6 @@ function showSection(id){
   if(id==='settings'){renderSettings();}
   if(id==='pond'){renderPond();}
   if(id==='routines'){renderRoutines();}
-  if(id==='hero'){renderHero();}
 }
 
 // ===== MOOD =====
@@ -4956,238 +4922,6 @@ async function deleteRoutine(){
 
 function closeRoutineEditor(){
   document.getElementById('routineEditModal').classList.remove('show');
-}
-
-// ===== HERO SYSTEM =====
-const HERO_CLASSES={
-  sage:{name:'The Sage',emoji:'🧙',color:'#7a40c0',accent:'#c8a0ff',bg:'rgba(122,64,192,.15)',desc:'Master of wisdom and reflection',boost:'wisdom',
-    portrait:(c,a)=>`<ellipse cx="100" cy="185" rx="38" ry="7" fill="#000" opacity=".1"/>
-    <path d="M65,80 Q55,40 100,28 Q145,40 135,80 Q140,90 100,95 Q60,90 65,80Z" fill="${a}" opacity=".85"/>
-    <circle cx="100" cy="170" r="44" fill="${c}"/>
-    <ellipse cx="100" cy="190" rx="38" ry="28" fill="${c}"/>
-    <ellipse cx="100" cy="196" rx="26" ry="16" fill="${a}" opacity=".3"/>
-    <circle cx="100" cy="100" r="38" fill="${c}"/>
-    <ellipse cx="82" cy="103" rx="8" ry="9.5" fill="#111"/>
-    <ellipse cx="118" cy="103" rx="8" ry="9.5" fill="#111"/>
-    <circle cx="84" cy="100" r="3" fill="#fff"/>
-    <circle cx="120" cy="100" r="3" fill="#fff"/>
-    <ellipse cx="76" cy="114" rx="9" ry="6" fill="${a}" opacity=".6"/>
-    <ellipse cx="124" cy="114" rx="9" ry="6" fill="${a}" opacity=".6"/>
-    <path d="M92,120 Q100,126 108,120" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <line x1="100" y1="148" x2="100" y2="185" stroke="${a}" stroke-width="4" stroke-linecap="round" opacity=".7"/>
-    <ellipse cx="100" cy="186" rx="6" ry="8" fill="${a}" opacity=".8"/>
-    <ellipse cx="100" cy="178" rx="4" ry="3" fill="${a}" opacity=".5"/>
-    <circle cx="100" cy="24" r="6" fill="#ffe880" opacity=".9"/>`},
-  warrior:{name:'The Warrior',emoji:'⚔️',color:'#c04028',accent:'#ff9870',bg:'rgba(192,64,40,.15)',desc:'Bold, decisive, quest-driven',boost:'strength',
-    portrait:(c,a)=>`<ellipse cx="100" cy="185" rx="38" ry="7" fill="#000" opacity=".1"/>
-    <rect x="62" y="145" width="76" height="50" rx="12" fill="${c}"/>
-    <rect x="58" y="138" width="84" height="16" rx="5" fill="${a}" opacity=".8"/>
-    <ellipse cx="100" cy="190" rx="36" ry="22" fill="${c}"/>
-    <ellipse cx="100" cy="195" rx="22" ry="12" fill="${a}" opacity=".25"/>
-    <circle cx="100" cy="100" r="38" fill="${c}"/>
-    <ellipse cx="82" cy="103" rx="8" ry="9.5" fill="#111"/>
-    <ellipse cx="118" cy="103" rx="8" ry="9.5" fill="#111"/>
-    <circle cx="84" cy="100" r="3" fill="#fff"/>
-    <circle cx="120" cy="100" r="3" fill="#fff"/>
-    <ellipse cx="76" cy="114" rx="9" ry="6" fill="${a}" opacity=".5"/>
-    <ellipse cx="124" cy="114" rx="9" ry="6" fill="${a}" opacity=".5"/>
-    <path d="M90,120 Q100,126 110,120" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <line x1="136" y1="100" x2="160" y2="60" stroke="${a}" stroke-width="5" stroke-linecap="round" opacity=".85"/>
-    <path d="M155,56 L164,54 L162,63 Z" fill="${a}" opacity=".9"/>
-    <rect x="60" y="158" width="8" height="28" rx="3" fill="${a}" opacity=".5"/>`},
-  druid:{name:'The Druid',emoji:'🌿',color:'#2a7840',accent:'#80d880',bg:'rgba(42,120,64,.15)',desc:'Attuned to habit and wellness',boost:'resilience',
-    portrait:(c,a)=>`<ellipse cx="100" cy="185" rx="38" ry="7" fill="#000" opacity=".1"/>
-    <path d="M65,155 Q55,130 100,125 Q145,130 135,155 Q140,180 100,185 Q60,180 65,155Z" fill="${c}"/>
-    <ellipse cx="100" cy="190" rx="36" ry="22" fill="${c}"/>
-    <ellipse cx="100" cy="196" rx="24" ry="14" fill="${a}" opacity=".25"/>
-    <circle cx="100" cy="100" r="38" fill="${c}"/>
-    <ellipse cx="82" cy="103" rx="8" ry="9.5" fill="#111"/>
-    <ellipse cx="118" cy="103" rx="8" ry="9.5" fill="#111"/>
-    <circle cx="84" cy="100" r="3" fill="#fff"/>
-    <circle cx="120" cy="100" r="3" fill="#fff"/>
-    <ellipse cx="76" cy="114" rx="9" ry="6" fill="${a}" opacity=".55"/>
-    <ellipse cx="124" cy="114" rx="9" ry="6" fill="${a}" opacity=".55"/>
-    <path d="M90,120 Q100,127 110,120" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <g opacity=".85"><ellipse cx="72" cy="72" rx="9" ry="5" fill="${a}" transform="rotate(-30 72 72)"/><ellipse cx="90" cy="64" rx="8" ry="4.5" fill="${a}" transform="rotate(-10 90 64)"/><ellipse cx="110" cy="64" rx="8" ry="4.5" fill="${a}" transform="rotate(10 110 64)"/><ellipse cx="128" cy="72" rx="9" ry="5" fill="${a}" transform="rotate(30 128 72)"/></g>
-    <circle cx="76" cy="170" r="6" fill="#ff80a0" opacity=".7"/><circle cx="124" cy="170" r="5" fill="#ff80a0" opacity=".65"/>`},
-  mystic:{name:'The Mystic',emoji:'✨',color:'#2848b0',accent:'#90b8ff',bg:'rgba(40,72,176,.15)',desc:'Collector of wonders and magic',boost:'magic',
-    portrait:(c,a)=>`<ellipse cx="100" cy="185" rx="38" ry="7" fill="#000" opacity=".1"/>
-    <path d="M65,155 Q55,130 100,125 Q145,130 135,155 Q140,180 100,185 Q60,180 65,155Z" fill="${c}"/>
-    <ellipse cx="100" cy="190" rx="36" ry="22" fill="${c}"/>
-    <ellipse cx="100" cy="195" rx="22" ry="12" fill="${a}" opacity=".2"/>
-    <circle cx="100" cy="100" r="38" fill="${c}"/>
-    <ellipse cx="82" cy="103" rx="8" ry="9.5" fill="#111"/>
-    <ellipse cx="118" cy="103" rx="8" ry="9.5" fill="#111"/>
-    <circle cx="84" cy="100" r="3" fill="#fff"/>
-    <circle cx="120" cy="100" r="3" fill="#fff"/>
-    <ellipse cx="76" cy="114" rx="9" ry="6" fill="${a}" opacity=".55"/>
-    <ellipse cx="124" cy="114" rx="9" ry="6" fill="${a}" opacity=".55"/>
-    <path d="M90,120 Q100,127 110,120" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <circle cx="100" cy="175" r="10" fill="#1a1a4a" stroke="${a}" stroke-width="1.5" opacity=".85"/>
-    <circle cx="97" cy="172" r="4" fill="${a}" opacity=".4"/>
-    <g fill="${a}" opacity=".8" font-size="0"><circle cx="128" cy="88" r="3"/><circle cx="72" cy="85" r="2.5"/><circle cx="118" cy="68" r="2"/><circle cx="148" cy="110" r="2.5"/><circle cx="52" cy="110" r="2"/></g>`},
-  ranger:{name:'The Ranger',emoji:'🎯',color:'#186880',accent:'#60d0d8',bg:'rgba(24,104,128,.15)',desc:'Focused, sharp, disciplined',boost:'focus',
-    portrait:(c,a)=>`<ellipse cx="100" cy="185" rx="38" ry="7" fill="#000" opacity=".1"/>
-    <rect x="64" y="145" width="72" height="48" rx="10" fill="${c}"/>
-    <ellipse cx="100" cy="190" rx="36" ry="22" fill="${c}"/>
-    <ellipse cx="100" cy="195" rx="24" ry="13" fill="${a}" opacity=".2"/>
-    <circle cx="100" cy="100" r="38" fill="${c}"/>
-    <ellipse cx="82" cy="103" rx="8" ry="9.5" fill="#111"/>
-    <ellipse cx="118" cy="103" rx="8" ry="9.5" fill="#111"/>
-    <circle cx="84" cy="100" r="3" fill="#fff"/>
-    <circle cx="120" cy="100" r="3" fill="#fff"/>
-    <ellipse cx="76" cy="114" rx="9" ry="6" fill="${a}" opacity=".5"/>
-    <ellipse cx="124" cy="114" rx="9" ry="6" fill="${a}" opacity=".5"/>
-    <path d="M91,120 Q100,125 109,120" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round"/>
-    <circle cx="100" cy="162" r="12" fill="none" stroke="${a}" stroke-width="2" opacity=".8"/>
-    <circle cx="100" cy="162" r="7" fill="none" stroke="${a}" stroke-width="1.5" opacity=".6"/>
-    <circle cx="100" cy="162" r="3" fill="${a}" opacity=".9"/>
-    <line x1="100" y1="148" x2="100" y2="145" stroke="${a}" stroke-width="1.5" opacity=".6"/>
-    <line x1="100" y1="176" x2="100" y2="178" stroke="${a}" stroke-width="1.5" opacity=".6"/>
-    <line x1="86" y1="162" x2="84" y2="162" stroke="${a}" stroke-width="1.5" opacity=".6"/>
-    <line x1="114" y1="162" x2="116" y2="162" stroke="${a}" stroke-width="1.5" opacity=".6"/>`},
-};
-
-const HERO_ABILITIES=[
-  {id:'spark',level:1,emoji:'✨',name:"Novice's Spark",desc:'Your journey in the Realm begins. Every small step counts.'},
-  {id:'shield',level:3,emoji:'🛡️',name:'Streak Shield',desc:'Your dedication to habits feels unbreakable. Streaks bend but don\'t break.'},
-  {id:'surge',level:5,emoji:'⚡',name:'XP Surge',desc:'Your quest rewards flow more freely. Effort multiplies.'},
-  {id:'bond',level:8,emoji:'🐾',name:'Creature Bond',desc:'Pond animals sense your warmth and grow attached faster.'},
-  {id:'lore',level:10,emoji:'📖',name:'Ancient Lore',desc:'The Realm reveals deeper secrets — hidden strategies unlock.'},
-  {id:'focus',level:12,emoji:'🕰️',name:'Deep Focus',desc:'Time bends for the focused mind. Extended sessions feel effortless.'},
-  {id:'glow',level:15,emoji:'🌟',name:'Realm Glow',desc:'Your presence lights the path for others. A golden aura surrounds your map.'},
-  {id:'keeper',level:20,emoji:'👑',name:'Keeper of the Realm',desc:'You have mastered the balance of doing and being. The Realm is yours.'},
-];
-
-function heroLevelTitle(level){
-  if(level>=20)return'Realm Keeper';
-  if(level>=16)return'Legend';
-  if(level>=13)return'Veteran';
-  if(level>=10)return'Hero';
-  if(level>=7)return'Champion';
-  if(level>=5)return'Adventurer';
-  if(level>=3)return'Apprentice';
-  return'Wanderer';
-}
-
-function calcHeroStats(){
-  const notes=(state.notes||[]).length;
-  const thoughts=S.get('thoughtDumps',[]).length;
-  const rsd=S.get('rsdEntries',[]).length;
-  const pond=(state.pondCollected||[]).length;
-  const pets=state.pondPets||{};
-  const totalAff=Object.values(pets).reduce((s,p)=>s+(p.affection||0),0);
-  const timerSess=state.timerSessions||0;
-  const timerMin=state.timerMinutes||0;
-  const streak=state.streak||0;
-  const xp=state.xp||0;
-  const level=state.level||1;
-  const todos=(state.todos||[]).filter(t=>t.done).length;
-  const habits=state.habits||[];
-  const bestStreak=habits.length?Math.max(...habits.map(h=>getHabitStreak(h))):0;
-  const bcLog=(state.bcLog||[]).length;
-  const routinesDone=((state.routines||[]).reduce((n,r)=>n+Object.keys(r.log||{}).length,0));
-  return{
-    focus:  Math.min(100, timerSess*6 + Math.floor(timerMin/10) + level*2),
-    strength:Math.min(100, Math.floor(xp/12) + todos*3 + routinesDone*4),
-    resilience:Math.min(100, bestStreak*10 + streak*5 + habits.length*4),
-    wisdom: Math.min(100, notes*6 + thoughts*5 + rsd*5 + level*3),
-    magic:  Math.min(100, pond*8 + Math.floor(totalAff/3)),
-    vitality:Math.min(100, bcLog*5 + streak*3 + level*4 + (state.wins||[]).length*3),
-  };
-}
-
-function pickHeroClass(key){
-  state.heroClass=key;save();renderHero();
-  toast('Class chosen! '+HERO_CLASSES[key].emoji, 'You are '+HERO_CLASSES[key].name,'#7a40c0');
-  confetti();
-}
-
-function renderHero(){
-  const wrap=document.getElementById('heroSheetWrap');if(!wrap)return;
-  const level=state.level||1;
-  const xp=state.xp||0;
-  const xpForNext=level*100;
-  const xpThisLevel=xp-((level-1)*100);
-  const xpPct=Math.min(100,Math.round(xpThisLevel/xpForNext*100));
-  const title=heroLevelTitle(level);
-  const cls=state.heroClass?HERO_CLASSES[state.heroClass]:null;
-
-  // Class picker if not chosen
-  if(!cls){
-    wrap.innerHTML=`
-      <div class="hero-card" style="text-align:center;padding:22px 16px 18px">
-        <h2 style="justify-content:center">🦸 Hero Sheet</h2>
-        <p>Choose your class to unlock your character sheet, stats, and abilities.</p>
-      </div>
-      <div class="hero-class-picker">
-        <div class="hero-class-picker-title">Who are you in the Realm?</div>
-        <div class="hero-class-grid">
-          ${Object.entries(HERO_CLASSES).map(([key,c])=>`
-            <div class="hero-class-card" style="border-color:${c.color}22" onclick="pickHeroClass('${key}')">
-              <span class="hero-class-emoji">${c.emoji}</span>
-              <div class="hero-class-card-name" style="color:${c.accent}">${c.name}</div>
-              <div class="hero-class-card-desc">${c.desc}</div>
-            </div>`).join('')}
-        </div>
-      </div>`;
-    return;
-  }
-
-  const stats=calcHeroStats();
-  const STAT_META={
-    focus:   {label:'Focus',   emoji:'⚡',color:'#60d0ff'},
-    strength:{label:'Strength',emoji:'💪',color:'#ff8060'},
-    resilience:{label:'Resilience',emoji:'🛡️',color:'#60e880'},
-    wisdom:  {label:'Wisdom',  emoji:'🧠',color:'#c880ff'},
-    magic:   {label:'Magic',   emoji:'✨',color:'#ffe860'},
-    vitality:{label:'Vitality',emoji:'❤️',color:'#ff6090'},
-  };
-
-  const portraitSVG=`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">${cls.portrait(cls.color,cls.accent)}</svg>`;
-
-  const statsHTML=Object.entries(stats).map(([key,val])=>{
-    const m=STAT_META[key];
-    const boosted=key===cls.boost?'boosted':'';
-    const displayVal=boosted?Math.min(100,val+10):val;
-    return`<div class="hero-stat-card ${boosted}">
-      <div class="hero-stat-top">
-        <span class="hero-stat-name">${m.emoji} ${m.label}${boosted?'<span style="font-size:.55rem;color:var(--secondary-light)"> ▲</span>':''}</span>
-        <span class="hero-stat-val" style="color:${m.color}">${displayVal}</span>
-      </div>
-      <div class="hero-stat-bar"><div class="hero-stat-fill" style="width:${displayVal}%;background:${m.color}"></div></div>
-    </div>`;}).join('');
-
-  const abilitiesHTML=HERO_ABILITIES.map(ab=>{
-    const unlocked=level>=ab.level;
-    return`<div class="hero-ability-row ${unlocked?'unlocked':'locked'}">
-      <span class="hero-ability-ico">${ab.emoji}</span>
-      <div class="hero-ability-info">
-        <div class="hero-ability-name">${ab.name}</div>
-        <div class="hero-ability-desc">${unlocked?ab.desc:'Reach Level '+ab.level+' to unlock'}</div>
-      </div>
-      <span class="hero-ability-badge ${unlocked?'unlocked-badge':'locked-badge'}">${unlocked?'Unlocked':'Lv '+ab.level}</span>
-    </div>`;}).join('');
-
-  wrap.innerHTML=`
-    <div class="hero-banner" style="background:${cls.bg};border:1px solid ${cls.color}40">
-      <img class="hero-portrait" src="data:image/svg+xml,${encodeURIComponent('<svg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'>'+cls.portrait(cls.color,cls.accent)+'</svg>')}" alt="hero"/>
-      <div class="hero-class-name" style="color:${cls.accent}">${cls.emoji} ${cls.name}</div>
-      <div class="hero-level-row">
-        <span class="hero-level-badge" style="background:${cls.color}40;color:${cls.accent}">Level ${level}</span>
-        <span class="hero-title-text">${title}</span>
-      </div>
-      <div class="hero-xp-bar-wrap">
-        <div class="hero-xp-bar-fill" style="width:${xpPct}%;background:linear-gradient(90deg,${cls.color},${cls.accent})"></div>
-      </div>
-      <div class="hero-xp-label">${xpThisLevel} / ${xpForNext} XP to Level ${level+1}</div>
-      <button class="hero-change-btn" onclick="state.heroClass=null;save();renderHero()">Change class</button>
-    </div>
-    <div class="hero-stats-grid">${statsHTML}</div>
-    <div class="hero-abilities-section">
-      <div class="hero-abilities-title">⚔️ Abilities</div>
-      ${abilitiesHTML}
-    </div>`;
 }
 
 // ===== GAME =====
@@ -6821,7 +6555,7 @@ function authLogin() {
     const res = AUTH.login(username, password);
     setAuthLoading('loginBtn', false);
     if (!res.ok) { showAuthError('loginError', res.err); return; }
-    AUTH.setSession(res); currentUser = res; launchApp();
+    AUTH.setSession(res); currentUser = res; loadState(); launchApp();
   }, 300);
 }
 function authRegister() {
@@ -6836,12 +6570,13 @@ function authRegister() {
     const res = AUTH.register(username, password, displayName, email);
     setAuthLoading('registerBtn', false);
     if (!res.ok) { showAuthError('registerError', res.err); return; }
-    AUTH.setSession(res); currentUser = res; launchApp();
+    AUTH.setSession(res); currentUser = res; loadState(); launchApp();
   }, 300);
 }
 function authGuest() {
   currentUser = null;
   AUTH.clearSession();
+  loadState();
   // Guests always start fresh — wipe any leftover guest data
   Object.keys(localStorage).filter(k => k.startsWith('nn3_')).forEach(k => localStorage.removeItem(k));
   launchApp();
@@ -7467,6 +7202,53 @@ function renderSettings(){
 
 if (currentUser) { launchApp(); }
 // else: auth screen is visible by default — user must sign in/register/guest
+
+// ===== PWA INSTALL HANDLER =====
+let deferredInstallPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  // Show install buttons
+  const authBtn = document.getElementById('authInstallBtn');
+  const settingsBtn = document.getElementById('settingsInstallBtn');
+  if (authBtn) authBtn.style.display = 'block';
+  if (settingsBtn) settingsBtn.style.display = 'inline-flex';
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredInstallPrompt = null;
+  // Hide install buttons, show installed label
+  const authBtn = document.getElementById('authInstallBtn');
+  const settingsBtn = document.getElementById('settingsInstallBtn');
+  const installedLabel = document.getElementById('settingsInstalledLabel');
+  if (authBtn) authBtn.style.display = 'none';
+  if (settingsBtn) settingsBtn.style.display = 'none';
+  if (installedLabel) installedLabel.style.display = 'inline';
+  toast('NeuroNav Installed! 🎉', 'App added to your home screen', '#10b981');
+});
+
+function installApp() {
+  if (!deferredInstallPrompt) {
+    toast('Install Not Available', 'Try using the browser menu to add to home screen', '#f59e0b');
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then((choice) => {
+    if (choice.outcome === 'accepted') {
+      console.log('User installed NeuroNav');
+    } else {
+      toast('Install Dismissed', 'You can install anytime from Settings', '#f59e0b');
+    }
+    deferredInstallPrompt = null;
+  });
+}
+
+// Check if already installed (display-mode: standalone)
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+  const installedLabel = document.getElementById('settingsInstalledLabel');
+  if (installedLabel) installedLabel.style.display = 'inline';
+}
 </script>
 </body>
 </html>
