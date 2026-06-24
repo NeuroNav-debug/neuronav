@@ -1318,6 +1318,7 @@ body.reduce-motion .bg-orb{display:none}
 .confirm-modal-actions{display:flex;gap:10px}
 .confirm-modal-actions .btn{flex:1}
 </style>
+<base target="_blank">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute">
@@ -1512,6 +1513,7 @@ body.reduce-motion .bg-orb{display:none}
     </div>
     <div class="auth-divider">or</div>
     <button class="auth-btn" style="background:var(--bg-elevated);color:var(--text-secondary);box-shadow:none;border:1px solid var(--border)" onclick="authGuest()">Continue as Guest</button>
+    <button class="auth-btn" id="authInstallBtn" style="background:linear-gradient(135deg,var(--success),var(--teal));color:white;box-shadow:0 4px 16px rgba(16,185,129,.35);margin-top:10px;display:none" onclick="installApp()">📲 Install NeuroNav</button>
     <div class="auth-guests-note">
       <strong>Guest mode</strong> stores data on this device only.<br>
       Create an account to keep your streaks, wins and progress safe.
@@ -3147,6 +3149,17 @@ body.reduce-motion .bg-orb{display:none}
     <div class="card card-body" style="margin-bottom:10px">
       <div style="font-size:.85rem;color:var(--text-secondary)" id="setAccountInfo"></div>
     </div>
+    <div class="section-label">📲 App</div>
+    <div class="card card-body" style="margin-bottom:10px">
+      <div class="set-toggle-row" style="border:none;padding:8px 0">
+        <div class="set-toggle-text">
+          <div class="set-toggle-label">Install NeuroNav</div>
+          <div class="set-toggle-sub">Add to your home screen for offline access</div>
+        </div>
+        <button class="btn btn-primary btn-sm" id="settingsInstallBtn" onclick="installApp()" style="display:none">Install</button>
+        <span id="settingsInstalledLabel" style="font-size:.78rem;color:var(--success-light);font-weight:700;display:none">✓ Installed</span>
+      </div>
+    </div>
   </div>
   <!-- BOTTOM TAB BAR -->
   <nav class="bottom-nav">
@@ -3374,6 +3387,7 @@ let aiConversation=[];
 let doneTodoCount=0;
 
 function init(){
+  loadState();
   checkDailyReset();
   if(!state.currentQuests) randomizeQuests(false);
   updateStats();renderQuests();renderDopamineMenu();renderWins();renderResetChecklist();renderStrategies('all');renderAchievements();
@@ -3475,7 +3489,7 @@ function showSection(id){
   // Scroll content to top
   const scroll=document.getElementById('contentScroll');
   if(scroll)scroll.scrollTo({top:0,behavior:'smooth'});
-  if(id==='stats')renderStatsPage();
+  if(id==='stats'){loadState();renderStatsPage();}
   if(id==='habits')renderHabits();
   if(id==='timer')populateTimerTaskSelect();
   if(id==='sensory')renderSensoryHistory();
@@ -6541,7 +6555,7 @@ function authLogin() {
     const res = AUTH.login(username, password);
     setAuthLoading('loginBtn', false);
     if (!res.ok) { showAuthError('loginError', res.err); return; }
-    AUTH.setSession(res); currentUser = res; launchApp();
+    AUTH.setSession(res); currentUser = res; loadState(); launchApp();
   }, 300);
 }
 function authRegister() {
@@ -6556,12 +6570,13 @@ function authRegister() {
     const res = AUTH.register(username, password, displayName, email);
     setAuthLoading('registerBtn', false);
     if (!res.ok) { showAuthError('registerError', res.err); return; }
-    AUTH.setSession(res); currentUser = res; launchApp();
+    AUTH.setSession(res); currentUser = res; loadState(); launchApp();
   }, 300);
 }
 function authGuest() {
   currentUser = null;
   AUTH.clearSession();
+  loadState();
   // Guests always start fresh — wipe any leftover guest data
   Object.keys(localStorage).filter(k => k.startsWith('nn3_')).forEach(k => localStorage.removeItem(k));
   launchApp();
@@ -7187,6 +7202,53 @@ function renderSettings(){
 
 if (currentUser) { launchApp(); }
 // else: auth screen is visible by default — user must sign in/register/guest
+
+// ===== PWA INSTALL HANDLER =====
+let deferredInstallPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  // Show install buttons
+  const authBtn = document.getElementById('authInstallBtn');
+  const settingsBtn = document.getElementById('settingsInstallBtn');
+  if (authBtn) authBtn.style.display = 'block';
+  if (settingsBtn) settingsBtn.style.display = 'inline-flex';
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredInstallPrompt = null;
+  // Hide install buttons, show installed label
+  const authBtn = document.getElementById('authInstallBtn');
+  const settingsBtn = document.getElementById('settingsInstallBtn');
+  const installedLabel = document.getElementById('settingsInstalledLabel');
+  if (authBtn) authBtn.style.display = 'none';
+  if (settingsBtn) settingsBtn.style.display = 'none';
+  if (installedLabel) installedLabel.style.display = 'inline';
+  toast('NeuroNav Installed! 🎉', 'App added to your home screen', '#10b981');
+});
+
+function installApp() {
+  if (!deferredInstallPrompt) {
+    toast('Install Not Available', 'Try using the browser menu to add to home screen', '#f59e0b');
+    return;
+  }
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then((choice) => {
+    if (choice.outcome === 'accepted') {
+      console.log('User installed NeuroNav');
+    } else {
+      toast('Install Dismissed', 'You can install anytime from Settings', '#f59e0b');
+    }
+    deferredInstallPrompt = null;
+  });
+}
+
+// Check if already installed (display-mode: standalone)
+if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+  const installedLabel = document.getElementById('settingsInstalledLabel');
+  if (installedLabel) installedLabel.style.display = 'inline';
+}
 </script>
 </body>
 </html>
