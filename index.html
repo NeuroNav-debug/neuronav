@@ -8,6 +8,8 @@
 <meta name="apple-mobile-web-app-title" content="NeuroNav">
 <meta name="theme-color" content="#07080f">
 <title>NeuroNav</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192x192.png">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -7204,12 +7206,14 @@ if (currentUser) { launchApp(); }
 // else: auth screen is visible by default — user must sign in/register/guest
 
 // ===== PWA INSTALL HANDLER =====
+// Thin bridge — pwa.js (loaded below) owns the full install/SW logic.
+// We keep only the app-specific UI hooks here.
+
 let deferredInstallPrompt = null;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
+  // pwa.js also listens; this copy keeps the inline installApp() working.
   deferredInstallPrompt = e;
-  // Show install buttons
   const authBtn = document.getElementById('authInstallBtn');
   const settingsBtn = document.getElementById('settingsInstallBtn');
   if (authBtn) authBtn.style.display = 'block';
@@ -7218,7 +7222,6 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 window.addEventListener('appinstalled', () => {
   deferredInstallPrompt = null;
-  // Hide install buttons, show installed label
   const authBtn = document.getElementById('authInstallBtn');
   const settingsBtn = document.getElementById('settingsInstallBtn');
   const installedLabel = document.getElementById('settingsInstalledLabel');
@@ -7229,19 +7232,20 @@ window.addEventListener('appinstalled', () => {
 });
 
 function installApp() {
-  if (!deferredInstallPrompt) {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.then((choice) => {
+      if (choice.outcome !== 'accepted') {
+        toast('Install Dismissed', 'You can install anytime from Settings', '#f59e0b');
+      }
+      deferredInstallPrompt = null;
+    });
+  } else if (window.neuronavPWA) {
+    // Fall back to pwa.js helper (shows manual instructions)
+    window.neuronavPWA.showManualInstallHelp();
+  } else {
     toast('Install Not Available', 'Try using the browser menu to add to home screen', '#f59e0b');
-    return;
   }
-  deferredInstallPrompt.prompt();
-  deferredInstallPrompt.userChoice.then((choice) => {
-    if (choice.outcome === 'accepted') {
-      console.log('User installed NeuroNav');
-    } else {
-      toast('Install Dismissed', 'You can install anytime from Settings', '#f59e0b');
-    }
-    deferredInstallPrompt = null;
-  });
 }
 
 // Check if already installed (display-mode: standalone)
@@ -7250,5 +7254,6 @@ if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.
   if (installedLabel) installedLabel.style.display = 'inline';
 }
 </script>
+<script src="pwa.js" defer></script>
 </body>
 </html>
