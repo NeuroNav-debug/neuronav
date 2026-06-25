@@ -4,9 +4,9 @@ const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
+  '/pwa.js',
   '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
-  '/icons/favicon-64x64.png'
+  '/icons/icon-512x512.png'
 ];
 
 // Install: Cache core assets
