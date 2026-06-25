@@ -8,8 +8,6 @@
 <meta name="apple-mobile-web-app-title" content="NeuroNav">
 <meta name="theme-color" content="#07080f">
 <title>NeuroNav</title>
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icons/icon-192x192.png">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -761,6 +759,47 @@ body.reduce-motion .bg-orb{display:none}
 .level-bar-track{height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden;margin-top:4px}
 .level-bar-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:4px;transition:width .6s ease}
 
+/* ===== ADVENTURES ===== */
+.adv-hero{background:linear-gradient(135deg,rgba(124,58,237,.18),rgba(236,72,153,.10));border:1px solid rgba(124,58,237,.3);border-radius:var(--radius-lg);padding:20px 18px 16px;margin-bottom:16px;position:relative;overflow:hidden}
+.adv-hero-title{font-size:1.15rem;font-weight:800;margin-bottom:4px}
+.adv-hero-sub{font-size:.82rem;color:var(--text-muted);margin-bottom:14px}
+.adv-level-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;background:rgba(124,58,237,.22);border:1px solid rgba(167,139,250,.4);font-size:.78rem;font-weight:700;color:var(--primary-light)}
+.adv-list{display:flex;flex-direction:column;gap:12px}
+.adv-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--t);cursor:pointer;position:relative}
+.adv-card:hover{border-color:var(--border-light);transform:translateY(-2px)}
+.adv-card.locked{opacity:.5;cursor:default;pointer-events:none}
+.adv-card.completed .adv-card-header{background:linear-gradient(135deg,rgba(16,185,129,.1),rgba(20,184,166,.07))}
+.adv-card.active-adv .adv-card-header{background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(236,72,153,.08))}
+.adv-card-header{padding:14px 16px 12px;display:flex;align-items:flex-start;gap:12px}
+.adv-icon{font-size:2rem;flex-shrink:0;line-height:1}
+.adv-card-meta{flex:1;min-width:0}
+.adv-card-name{font-size:.98rem;font-weight:800;margin-bottom:2px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.adv-card-desc{font-size:.78rem;color:var(--text-muted);line-height:1.5;margin-bottom:8px}
+.adv-card-tags{display:flex;gap:5px;flex-wrap:wrap}
+.adv-tag{padding:2px 8px;border-radius:6px;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.adv-tag.req{background:rgba(245,158,11,.12);color:var(--secondary-light)}
+.adv-tag.xp{background:rgba(124,58,237,.12);color:var(--primary-light)}
+.adv-tag.done{background:rgba(16,185,129,.12);color:var(--success-light)}
+.adv-tag.active{background:rgba(236,72,153,.12);color:#f9a8d4}
+.adv-lock-badge{font-size:.72rem;font-weight:700;color:var(--text-dim);margin-left:auto;flex-shrink:0;padding:3px 8px;border-radius:6px;background:var(--bg-elevated);border:1px solid var(--border)}
+.adv-story{border-top:1px solid var(--border);padding:0;max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),padding .3s ease}
+.adv-story.open{max-height:1400px;padding:16px}
+.adv-story-scene{font-size:.85rem;color:var(--text-secondary);line-height:1.75;margin-bottom:16px;font-style:italic;padding:12px 14px;background:rgba(124,58,237,.06);border-left:3px solid var(--primary);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.adv-choices{display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.adv-choice-btn{padding:12px 14px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-elevated);color:var(--text);font-family:'Syne',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;text-align:left;transition:var(--t);line-height:1.4;display:flex;align-items:flex-start;gap:10px}
+.adv-choice-btn:hover{border-color:var(--primary-light);background:rgba(124,58,237,.1)}
+.adv-choice-btn.chosen{border-color:var(--success);background:rgba(16,185,129,.08);color:var(--success-light)}
+.adv-choice-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px}
+.adv-outcome{padding:12px 14px;border-radius:var(--radius-sm);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);font-size:.83rem;color:var(--success-light);line-height:1.6;margin-bottom:12px;display:none}
+.adv-outcome.show{display:block}
+.adv-progress-wrap{margin-bottom:12px}
+.adv-progress-label{font-size:.72rem;color:var(--text-dim);font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;display:flex;justify-content:space-between}
+.adv-progress-track{height:6px;background:var(--bg-elevated);border-radius:3px;overflow:hidden}
+.adv-progress-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:3px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.adv-story-footer{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.adv-complete-badge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.3);font-size:.75rem;font-weight:700;color:var(--success-light)}
+.adv-section-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-dim);padding:8px 0 6px;border-bottom:1px solid var(--border);margin-bottom:10px}
+
 /* ===== TIMER TASK BINDER ===== */
 .timer-task-bind{margin:14px 0;padding:12px 14px;background:var(--bg-card);border-radius:var(--radius);border:1px solid var(--border)}
 .timer-task-bind-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-dim);margin-bottom:8px}
@@ -1453,6 +1492,7 @@ body.reduce-motion .bg-orb{display:none}
         <button class="drawer-item" id="di-strategies" onclick="showSection('strategies');closeDrawer()"><span class="di-ico">📖</span><span class="di-label">Strategies</span></button>
         <button class="drawer-item" id="di-reset" onclick="showSection('reset');closeDrawer()"><span class="di-ico">🔄</span><span class="di-label">Weekly Reset</span></button>
         <button class="drawer-item" id="di-game" onclick="showSection('game');closeDrawer()"><span class="di-ico">🎮</span><span class="di-label">Focus Game</span></button>
+        <button class="drawer-item" id="di-adventures" onclick="showSection('adventures');closeDrawer()"><span class="di-ico">⛰️</span><span class="di-label">Adventures</span></button>
         <button class="drawer-item" id="di-pond" onclick="showSection('pond');closeDrawer()"><span class="di-ico">🐾</span><span class="di-label">Animal Pond</span></button>
       </div>
     </div>
@@ -1801,6 +1841,28 @@ body.reduce-motion .bg-orb{display:none}
 <circle r="3" fill="#ffe870" opacity=".9" filter="url(#mapGlow)"><animateMotion dur="9s" repeatCount="indefinite" path="M133,210 Q65,250 0,420"/></circle>
 <circle r="2.5" fill="#d4b8ff" opacity=".8" filter="url(#mapGlow)"><animateMotion dur="11s" repeatCount="indefinite" path="M200,207 Q200,315 200,423"/></circle>
 <circle r="2.5" fill="#80d0f0" opacity=".8" filter="url(#mapGlow)"><animateMotion dur="7s" repeatCount="indefinite" path="M133,420 Q90,478 65,538"/></circle>
+
+<!-- Adventures: Enchanted Peak (floating pin over centre-top) -->
+<g class="map-region" data-section="adventures" data-label="Enchanted Peak" transform="translate(200,105)">
+  <!-- Glow halo -->
+  <circle cx="0" cy="0" r="38" fill="rgba(250,220,80,.07)" filter="url(#hubGlow)"/>
+  <!-- Mountain shape -->
+  <polygon points="0,-34 -28,18 28,18" fill="#c8a030" opacity=".9"/>
+  <polygon points="0,-34 -10,-8 10,-8" fill="#ffe870" opacity=".95"/>
+  <!-- Snow cap -->
+  <polygon points="0,-34 -8,-18 8,-18" fill="#f0f4ff" opacity=".95"/>
+  <!-- Sparkles -->
+  <circle cx="-18" cy="-10" r="1.8" fill="#ffe870" opacity=".9" filter="url(#mapGlow)"/>
+  <circle cx="20" cy="-4" r="1.4" fill="#ffe870" opacity=".8" filter="url(#mapGlow)"/>
+  <circle cx="6" cy="-30" r="1.2" fill="#fff" opacity=".9" filter="url(#mapGlow)"/>
+  <!-- Pulse ring -->
+  <circle cx="0" cy="0" r="36" fill="none" stroke="rgba(255,220,60,.35)" stroke-width="2">
+    <animate attributeName="r" values="34;42;34" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values=".5;0;.5" dur="3s" repeatCount="indefinite"/>
+  </circle>
+  <text x="0" y="32" text-anchor="middle" font-family="Georgia,serif" font-size="10.5" font-weight="bold" fill="#ffe060" pointer-events="none">⛰️ Enchanted Peak</text>
+  <text x="0" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="8.5" fill="#d4a820" opacity=".9" pointer-events="none">Adventures</text>
+</g>
 
 <!-- Compass rose -->
 <g transform="translate(370,610)" opacity=".35" pointer-events="none">
@@ -2223,6 +2285,16 @@ body.reduce-motion .bg-orb{display:none}
       </div>
     </div>
     </div>
+  </div>
+
+  <!-- ADVENTURES -->
+  <div class="section" id="sec-adventures">
+    <div class="adv-hero">
+      <div class="adv-hero-title">⛰️ Adventures</div>
+      <div class="adv-hero-sub">Level-gated story quests. Make choices, earn XP, shape your legend.</div>
+      <div class="adv-level-badge" id="advLevelBadge">⚡ Level <span id="advLevelNum">1</span></div>
+    </div>
+    <div id="advListWrap"></div>
   </div>
 
   <!-- ANIMAL POND -->
@@ -3305,6 +3377,7 @@ function loadState() {
     shells:S.get('shells',0),
     pondPets:S.get('pondPets',{}),
     routines:S.get('routines',DEFAULT_ROUTINES),
+    adventures:S.get('adventures',{}),
   };
 }
 function save(){Object.keys(state).forEach(k=>S.set(k,state[k]));}
@@ -3416,7 +3489,18 @@ function addXP(a){
   const today=new Date().toISOString().slice(0,10);
   state.xpHistory[today]=(state.xpHistory[today]||0)+a;
   save();updateStats();
-  if(state.level>old){toast('Level Up! 🎉','You reached Level '+state.level+'!','#f59e0b');confetti();duckDance('party',true);checkAch('level_5');checkAch('level_10');}
+  if(state.level>old){
+    toast('Level Up! 🎉','You reached Level '+state.level+'!','#f59e0b');confetti();duckDance('party',true);
+    checkAch('level_5');checkAch('level_10');checkAch('level_15');checkAch('level_20');
+    // Unlock new adventures notification
+    const newUnlocks=(typeof ADVENTURES!=='undefined')?ADVENTURES.filter(adv=>adv.levelReq===state.level):[];
+    if(newUnlocks.length){
+      setTimeout(()=>toast('⛰️ New Adventure!',newUnlocks[0].name+' is now available!','#a78bfa'),800);
+    }
+    // Refresh adventures page if open
+    const advSec=document.getElementById('sec-adventures');
+    if(advSec&&advSec.classList.contains('active')){setTimeout(renderAdventures,350);}
+  }
 }
 
 // ===== DAILY RESET =====
@@ -3432,7 +3516,7 @@ function checkDailyReset(){
 }
 
 // ===== STATS =====
-const PAGE_TITLES={map:'🗺️ World Map',quests:'📋 Quests',notes:'📝 Notes',habits:'🔁 Habits',stats:'📊 Stats',calendar:'📅 Calendar',todo:'✅ To-Do',dopamine:'⚡ Dopamine',timer:'⏱️ Focus',wins:'🏆 Wins',reset:'🔄 Reset',strategies:'📖 Strategies',game:'🎮 Game',pond:'🐾 Animal Pond',coach:'🤖 Coach',routines:'🌅 Routines',sensory:'🌡️ Sensory',bodydouble:'👥 Body Double',thoughtdump:'🧹 Dump',breakdown:'🔬 Breakdown',rsd:'💜 RSD Vault',regulate:'🧰 Regulate',nownext:'🎯 Now/Next/Later',bodycheckin:'🫀 Body Check-in',stim:'🌀 Stim Corner',toolbox:'🧭 Time &amp; Energy',nutrition:'🥗 Nutrition',insights:'📈 Insights',settings:'⚙️ Settings'};
+const PAGE_TITLES={map:'🗺️ World Map',quests:'📋 Quests',notes:'📝 Notes',habits:'🔁 Habits',stats:'📊 Stats',calendar:'📅 Calendar',todo:'✅ To-Do',dopamine:'⚡ Dopamine',timer:'⏱️ Focus',wins:'🏆 Wins',reset:'🔄 Reset',strategies:'📖 Strategies',game:'🎮 Game',pond:'🐾 Animal Pond',coach:'🤖 Coach',routines:'🌅 Routines',sensory:'🌡️ Sensory',bodydouble:'👥 Body Double',thoughtdump:'🧹 Dump',breakdown:'🔬 Breakdown',rsd:'💜 RSD Vault',regulate:'🧰 Regulate',nownext:'🎯 Now/Next/Later',bodycheckin:'🫀 Body Check-in',stim:'🌀 Stim Corner',toolbox:'🧭 Time &amp; Energy',nutrition:'🥗 Nutrition',insights:'📈 Insights',settings:'⚙️ Settings',adventures:'⛰️ Adventures'};
 const TAB_IDS=['quests','timer','regulate','stats'];
 function updateStats(){
   const x=state.xp,l=state.level,s=state.streak;
@@ -3508,6 +3592,7 @@ function showSection(id){
   if(id==='settings'){renderSettings();}
   if(id==='pond'){renderPond();}
   if(id==='routines'){renderRoutines();}
+  if(id==='adventures'){renderAdventures();}
 }
 
 // ===== MOOD =====
@@ -3569,7 +3654,11 @@ function toggleQuest(id){
 function checkAch(id){
   if(state.achievements.includes(id))return;
   if(id==='level_5'&&state.level<5)return;if(id==='level_10'&&state.level<10)return;
+  if(id==='level_15'&&state.level<15)return;if(id==='level_20'&&state.level<20)return;
   if(id==='streak_3'&&state.streak<3)return;if(id==='five_todos'&&doneTodoCount<5)return;
+  if(id==='first_adventure'&&!Object.values(state.adventures||{}).some(a=>a.completed))return;
+  if(id==='adventurer'&&Object.values(state.adventures||{}).filter(a=>a.completed).length<3)return;
+  if(id==='legendary_explorer'&&Object.values(state.adventures||{}).filter(a=>a.completed).length<ADVENTURES.length)return;
   state.achievements.push(id);save();renderAchievements();
   const a=ACH.find(x=>x.id===id);if(a){toast('Achievement! '+a.icon,a.name+': '+a.desc,'#f59e0b');confetti();duckDance('halo',true);}
 }
@@ -7205,15 +7294,320 @@ function renderSettings(){
 if (currentUser) { launchApp(); }
 // else: auth screen is visible by default — user must sign in/register/guest
 
-// ===== PWA INSTALL HANDLER =====
-// Thin bridge — pwa.js (loaded below) owns the full install/SW logic.
-// We keep only the app-specific UI hooks here.
+// ===== ADVENTURES =====
+const ADVENTURES = [
+  {
+    id:'adv_breath',
+    name:'The First Breath',
+    icon:'🌬️',
+    desc:'Every hero starts somewhere. Yours begins with a single, deliberate breath.',
+    levelReq:1,
+    xpReward:40,
+    scenes:[
+      {
+        text:`The realm of NeuroNav stretches before you — endless forests, glowing towers, hidden caves. You're standing at the trailhead of Enchanted Peak, a little nervous, a little excited. A wise old fox trots up and says: "The mountain doesn't care how fast you climb. What matters is that you begin."`,
+        choices:[
+          {ico:'🫁',text:'Take a slow, deep breath and feel your feet on the ground.',outcome:`You breathe in for four counts, hold, breathe out. The anxiety softens. The fox nods: "That's it. You're already climbing." You earn the title Breath-Taker.`,xp:40},
+          {ico:'🏃',text:'Sprint straight up the trail — no point in waiting!',outcome:`You burst forward with energy! Ten steps in, you remember: "Pace matters." You slow, breathe, and settle into a rhythm that feels sustainable. The fox laughs warmly.`,xp:40},
+        ]
+      }
+    ]
+  },
+  {
+    id:'adv_fog',
+    name:'The Brain Fog Forest',
+    icon:'🌫️',
+    desc:'A dense fog rolls through Whispering Wood. Can you navigate it without losing yourself?',
+    levelReq:2,
+    xpReward:55,
+    scenes:[
+      {
+        text:`You enter Whispering Wood. A thick silver fog curls between the trees — the kind that makes you forget what you came here for. You can hear distant fireflies humming, but you can barely see your hand. You have a lantern with faint light.`,
+        choices:[
+          {ico:'📝',text:'Write down your destination on a scrap of bark so you don\'t forget.',outcome:`Smart. You carve "Cozy Cottage — home base" into a piece of bark and hold it tight. When the fog thickens, you glance at it and keep walking. You emerge on the other side with your direction intact.`,xp:55},
+          {ico:'🎵',text:'Hum a song to stay anchored to the present moment.',outcome:`You hum a slow, steady tune. It gives your mind something to hold on to — a rhythm to follow through the fog. Somehow it clears a little with every note. You stumble out, still humming, smiling.`,xp:55},
+          {ico:'🛑',text:'Stop and wait. The fog might lift on its own.',outcome:`You find a mossy rock and sit. And wait. The fog does lift — slowly, twenty minutes later. But you feel less frozen and more rested than expected. Sometimes pausing IS the move.`,xp:55},
+        ]
+      }
+    ]
+  },
+  {
+    id:'adv_dragon',
+    name:'The Distraction Dragon',
+    icon:'🐉',
+    desc:'A glittering dragon guards the Crystal Tower. Every shiny thing it breathes is a new distraction.',
+    levelReq:3,
+    xpReward:70,
+    scenes:[
+      {
+        text:`The Crystal Tower gleams ahead. But blocking the path is Scatterbrain — a tiny dragon with enormous golden wings. It breathes out little fires shaped like notifications, snacks, and unread tabs. "Play with me!" it squeaks. You have important stats to check inside the tower.`,
+        choices:[
+          {ico:'⏰',text:'Promise the dragon 10 minutes of play time AFTER you finish.',outcome:`"Deal!" the dragon chirps, letting you pass. Inside the tower you get your work done. Ten minutes later you throw a stick for Scatterbrain and it's the best ten minutes of your day.`,xp:70},
+          {ico:'📵',text:'Gently close your phone, then walk past with soft focus on the tower door.',outcome:`The dragon blinks — it expected a fight. Your calm disinterest is confusing but effective. You slip inside. Scatterbrain goes off to bother someone else.`,xp:70},
+          {ico:'📋',text:'Write the distraction on your "later list" so your brain knows it\'s safe.',outcome:`You pull out your scroll. "Golden wings — look up later." "Snacks — after tower." The dragon watches you write, somehow satisfied. It steps aside. Your brain is calm because nothing is forgotten.`,xp:70},
+        ]
+      }
+    ]
+  },
+  {
+    id:'adv_potion',
+    name:'The Energy Potion Riddle',
+    icon:'⚗️',
+    desc:'The alchemist of Healing Grove has three potions. Only one truly restores energy. Choose wisely.',
+    levelReq:4,
+    xpReward:80,
+    scenes:[
+      {
+        text:`In Healing Grove, a mushroom-shaped alchemist presents three glowing bottles. "One gives real energy," they say. "One gives the illusion of energy. One gives rest disguised as laziness." You must choose before sunset.`,
+        choices:[
+          {ico:'💧',text:'The clear blue one — looks like water and sunlight combined.',outcome:`You drink. It tastes like cold water and morning air. Within minutes you feel steady and clear. "You chose hydration, movement, and rest," the alchemist smiles. "The real potion was basics all along."`,xp:80},
+          {ico:'🍬',text:'The red sparkling one — fizzy, sweet, instant buzz.',outcome:`Delicious. You feel electric for twenty minutes, then crash onto a mossy log. "Ah," the alchemist nods. "The illusion potion. Quick sugar." You wake up an hour later, wiser, with +80 XP somehow anyway.`,xp:80},
+          {ico:'🌙',text:'The dim purple one — glows faintly, smells like lavender.',outcome:`You hesitate — it looks like it'll make you sleepy. You drink it anyway. It's rest. Deep, real rest. You wake at dawn with more energy than you've had all week. The alchemist was right. Rest is not laziness.`,xp:80},
+        ]
+      }
+    ]
+  },
+  {
+    id:'adv_market',
+    name:'The Overwhelm Market',
+    icon:'🏪',
+    desc:'Village Market is packed. Everyone wants something from you. How do you navigate?',
+    levelReq:5,
+    xpReward:90,
+    scenes:[
+      {
+        text:`Village Market is chaos today — ten merchants shout at once. The baker needs help counting coins. The blacksmith wants your opinion on a sword. The candle-maker is crying. The herbalist has a time-sensitive errand. Everything feels equally urgent. Your chest is tight.`,
+        choices:[
+          {ico:'✋',text:'Breathe first. Don\'t speak to anyone until you feel steady.',outcome:`You step back against a wall. Three breaths. The noise doesn't stop but you're no longer inside it. One by one you assess: candle-maker first (crying = real distress), then herbalist (time-sensitive), the rest can wait. You handle it with grace.`,xp:90},
+          {ico:'📋',text:'Write everyone\'s request on parchment, then prioritize the list.',outcome:`"Hold on," you say calmly, pulling out a scroll. You write each request down. The act of writing slows your heart. Now you have a list. Now it's manageable. The merchants are actually impressed.`,xp:90},
+          {ico:'🚶',text:'Quietly tell each merchant you\'ll return in five minutes, then step outside.',outcome:`You walk outside. Just stepping out of the noise helps enormously. You set a mental timer: "Five minutes to breathe, then back in." You return calmer and more effective than if you'd stayed inside panicking.`,xp:90},
+        ]
+      }
+    ]
+  },
+  {
+    id:'adv_tower',
+    name:'The Unfinished Tower',
+    icon:'🏗️',
+    desc:'You started building something great. But it\'s half-done and you\'ve lost momentum. Do you continue?',
+    levelReq:7,
+    xpReward:110,
+    scenes:[
+      {
+        text:`You discover a half-built tower on the edge of Crystal Lake — your own creation, started weeks ago. Vines have started creeping up the lower stones. Part of you feels ashamed for stopping. Part of you is curious about what's inside. A bird has built a nest in the gap at the top.`,
+        choices:[
+          {ico:'🧱',text:'Add just one stone today. Just one.',outcome:`You climb the rubble and place a single stone. It takes four minutes. But you're here, and you started again. Tomorrow you'll add two. The bird watches from its nest, unbothered. Progress doesn't care about the gap.`,xp:110},
+          {ico:'🔍',text:'Investigate what stopped you before, so you can avoid the same trap.',outcome:`You sit with the unfinished tower for a while. "I ran out of energy after the third floor. I was doing it alone." Now you know. You plan smaller sessions and ask a friend to check in. The tower will finish differently this time.`,xp:110},
+          {ico:'💛',text:'Forgive yourself for the pause and celebrate what you already built.',outcome:`You put your hand on the stone. It's solid. Real. You built three floors — that's three floors more than nothing. The pause was part of the process. You light a small candle inside and call it a ceremony of return.`,xp:110},
+        ]
+      }
+    ]
+  },
+  {
+    id:'adv_stars',
+    name:'The Star Cartographer',
+    icon:'🌠',
+    desc:'A celestial mapmaker wants your help charting the stars of your strengths. What do you find?',
+    levelReq:10,
+    xpReward:150,
+    scenes:[
+      {
+        text:`At the apex of Enchanted Peak, you meet the Star Cartographer — an ancient figure who maps constellations of strength. "Tell me," they say, unrolling a blank scroll of midnight-blue sky, "what are three stars in your sky? Not what you wish you were. What you actually are."`,
+        choices:[
+          {ico:'💡',text:'I see clearly what others miss. I notice connections no one else does.',outcome:`The Cartographer draws a brilliant three-pointed star. "The Connector," they name it. "This one guides night travellers who feel lost." You feel it — the truth of it. The sky holds a version of you that has always been there.`,xp:150},
+          {ico:'❤️',text:'I feel deeply. I care about people and things with my whole heart.',outcome:`"The Deep Well," the Cartographer draws — a constellation shaped like a spiral. "Many people are thirsty for this depth and don't know it." You are seen. Your sensitivity is mapped as light in the sky, not a flaw in you.`,xp:150},
+          {ico:'⚡',text:'I burn bright when I care. My hyperfocus is a superpower when aimed.',outcome:`The Cartographer laughs with delight. "The Comet! Rare. Bright. Impossible to ignore." They draw a blazing arc across the scroll. "The world calls this a problem. The sky calls it a gift." You feel it land somewhere deep.`,xp:150},
+        ]
+      }
+    ]
+  },
+];
 
+function renderAdventures(){
+  const lvl = state.level || 1;
+  document.getElementById('advLevelNum').textContent = lvl;
+  const wrap = document.getElementById('advListWrap');
+  wrap.innerHTML = '';
+
+  // Group into unlocked and locked
+  const unlocked = ADVENTURES.filter(a => lvl >= a.levelReq);
+  const locked   = ADVENTURES.filter(a => lvl < a.levelReq);
+
+  if(unlocked.length){
+    const t = document.createElement('div');
+    t.className = 'adv-section-title';
+    t.textContent = '✦ Available Adventures';
+    wrap.appendChild(t);
+    const ul = document.createElement('div');
+    ul.className = 'adv-list';
+    unlocked.forEach(a => wrap.appendChild(buildAdvCard(a, false)));
+  }
+
+  if(locked.length){
+    const t2 = document.createElement('div');
+    t2.className = 'adv-section-title';
+    t2.style.marginTop = '18px';
+    t2.textContent = '🔒 Coming with Levels';
+    wrap.appendChild(t2);
+    const ll = document.createElement('div');
+    ll.className = 'adv-list';
+    locked.forEach(a => wrap.appendChild(buildAdvCard(a, true)));
+  }
+}
+
+function buildAdvCard(adv, isLocked){
+  const advState = (state.adventures || {})[adv.id] || {};
+  const isDone = advState.completed;
+  const isActive = advState.started && !isDone;
+  const chosenChoice = advState.choice;
+
+  const card = document.createElement('div');
+  card.className = 'adv-card' + (isLocked?' locked':'') + (isDone?' completed':'') + (isActive?' active-adv':'');
+
+  // Tags
+  const reqTag = `<span class="adv-tag req">Lv ${adv.levelReq}+</span>`;
+  const xpTag  = `<span class="adv-tag xp">+${adv.xpReward} XP</span>`;
+  const doneTag = isDone ? `<span class="adv-tag done">✓ Complete</span>` : '';
+  const activeTag = isActive ? `<span class="adv-tag active">▶ In Progress</span>` : '';
+  const lockBadge = isLocked ? `<div class="adv-lock-badge">🔒 Lv ${adv.levelReq}</div>` : '';
+
+  // Progress calc
+  const totalChoices = adv.scenes.reduce((s,sc)=>s+sc.choices.length,0);
+  const completedPct = isDone ? 100 : 0;
+
+  card.innerHTML = `
+    <div class="adv-card-header" onclick="toggleAdvStory('${adv.id}')">
+      <div class="adv-icon">${adv.icon}</div>
+      <div class="adv-card-meta">
+        <div class="adv-card-name">${adv.name} ${lockBadge}</div>
+        <div class="adv-card-desc">${adv.desc}</div>
+        <div class="adv-card-tags">${reqTag}${xpTag}${doneTag}${activeTag}</div>
+      </div>
+    </div>
+    <div class="adv-story" id="advStory-${adv.id}">
+      ${isDone ? renderAdvDoneState(adv, advState) : renderAdvScene(adv, advState)}
+    </div>
+  `;
+  return card;
+}
+
+function renderAdvScene(adv, advState){
+  const scene = adv.scenes[0];
+  const chosen = advState.choice;
+  const outcome = advState.outcome;
+
+  const choicesHtml = scene.choices.map((c,i) => {
+    const isCh = chosen === i;
+    return `<button class="adv-choice-btn${isCh?' chosen':''}" onclick="chooseAdventure('${adv.id}',${i})" ${chosen!==undefined&&!isCh?'disabled style="opacity:.45;cursor:default"':''}>
+      <span class="adv-choice-ico">${c.ico}</span><span>${c.text}</span>
+    </button>`;
+  }).join('');
+
+  const outcomeHtml = outcome
+    ? `<div class="adv-outcome show">✨ ${outcome}</div>`
+    : `<div class="adv-outcome" id="advOutcome-${adv.id}"></div>`;
+
+  const footerHtml = advState.completed
+    ? `<div class="adv-complete-badge">✓ Adventure Complete! +${adv.xpReward} XP</div>`
+    : (chosen !== undefined
+        ? `<button class="btn btn-primary btn-sm" onclick="completeAdventure('${adv.id}')">✓ Complete Adventure (+${adv.xpReward} XP)</button>`
+        : `<span style="font-size:.75rem;color:var(--text-dim)">Make a choice to begin your path</span>`
+      );
+
+  return `
+    <div class="adv-story-scene">${scene.text}</div>
+    <div class="adv-choices">${choicesHtml}</div>
+    ${outcomeHtml}
+    <div class="adv-story-footer">${footerHtml}</div>
+  `;
+}
+
+function renderAdvDoneState(adv, advState){
+  const scene = adv.scenes[0];
+  const chosen = advState.choice;
+  const choice = scene.choices[chosen];
+  return `
+    <div class="adv-story-scene">${scene.text}</div>
+    <div class="adv-outcome show">✨ ${advState.outcome}</div>
+    <div class="adv-story-footer">
+      <div class="adv-complete-badge">⭐ Adventure Complete! +${adv.xpReward} XP earned</div>
+    </div>
+  `;
+}
+
+function toggleAdvStory(id){
+  const el = document.getElementById('advStory-'+id);
+  if(!el) return;
+  el.classList.toggle('open');
+}
+
+function chooseAdventure(advId, choiceIdx){
+  if(!state.adventures) state.adventures = {};
+  const adv = ADVENTURES.find(a=>a.id===advId);
+  if(!adv) return;
+  const scene = adv.scenes[0];
+  const choice = scene.choices[choiceIdx];
+  state.adventures[advId] = {
+    started: true,
+    choice: choiceIdx,
+    outcome: choice.outcome,
+    completed: false,
+  };
+  save();
+  // Update outcome UI without full re-render
+  const outcomeEl = document.getElementById('advOutcome-'+advId);
+  if(outcomeEl){
+    outcomeEl.textContent = '✨ ' + choice.outcome;
+    outcomeEl.classList.add('show');
+  }
+  // Disable unchosen buttons
+  const storyEl = document.getElementById('advStory-'+advId);
+  if(storyEl){
+    storyEl.querySelectorAll('.adv-choice-btn').forEach((btn,i)=>{
+      if(i===choiceIdx){btn.classList.add('chosen');}
+      else{btn.disabled=true;btn.style.opacity='.4';btn.style.cursor='default';}
+    });
+    // Replace footer
+    const footer = storyEl.querySelector('.adv-story-footer');
+    if(footer) footer.innerHTML = `<button class="btn btn-primary btn-sm" onclick="completeAdventure('${advId}')">✓ Complete Adventure (+${adv.xpReward} XP)</button>`;
+  }
+}
+
+function completeAdventure(advId){
+  if(!state.adventures) state.adventures = {};
+  const adv = ADVENTURES.find(a=>a.id===advId);
+  if(!adv || !state.adventures[advId]) return;
+  if(state.adventures[advId].completed) return;
+  state.adventures[advId].completed = true;
+  save();
+  addXP(adv.xpReward);
+  toast('Adventure Complete! '+adv.icon, adv.name+' — +'+adv.xpReward+' XP!','#f59e0b');
+  confetti();
+  duckDance('party', true);
+  checkAch('first_adventure');
+  const completedCount = Object.values(state.adventures).filter(a=>a.completed).length;
+  if(completedCount >= 3) checkAch('adventurer');
+  if(completedCount >= ADVENTURES.length) checkAch('legendary_explorer');
+  // Re-render the section
+  setTimeout(()=>renderAdventures(), 400);
+}
+
+// Add adventure achievements
+const ADV_ACH = [
+  {id:'first_adventure',name:'First Steps',desc:'Complete your first adventure',icon:'⛰️'},
+  {id:'adventurer',name:'Adventurer',desc:'Complete 3 adventures',icon:'🗺️'},
+  {id:'legendary_explorer',name:'Legendary Explorer',desc:'Complete all adventures',icon:'🌟'},
+];
+// Merge into ACH array
+ADV_ACH.forEach(a=>{ if(!ACH.find(x=>x.id===a.id)) ACH.push(a); });
+if(!ACH.find(x=>x.id==='level_15')) ACH.push({id:'level_15',name:'Realm Walker',desc:'Reach Level 15',icon:'🌍'});
+if(!ACH.find(x=>x.id==='level_20')) ACH.push({id:'level_20',name:'NeuroNav Master',desc:'Reach Level 20',icon:'👑'});
 let deferredInstallPrompt = null;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // pwa.js also listens; this copy keeps the inline installApp() working.
+  e.preventDefault();
   deferredInstallPrompt = e;
+  // Show install buttons
   const authBtn = document.getElementById('authInstallBtn');
   const settingsBtn = document.getElementById('settingsInstallBtn');
   if (authBtn) authBtn.style.display = 'block';
@@ -7222,6 +7616,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 window.addEventListener('appinstalled', () => {
   deferredInstallPrompt = null;
+  // Hide install buttons, show installed label
   const authBtn = document.getElementById('authInstallBtn');
   const settingsBtn = document.getElementById('settingsInstallBtn');
   const installedLabel = document.getElementById('settingsInstalledLabel');
@@ -7232,20 +7627,19 @@ window.addEventListener('appinstalled', () => {
 });
 
 function installApp() {
-  if (deferredInstallPrompt) {
-    deferredInstallPrompt.prompt();
-    deferredInstallPrompt.userChoice.then((choice) => {
-      if (choice.outcome !== 'accepted') {
-        toast('Install Dismissed', 'You can install anytime from Settings', '#f59e0b');
-      }
-      deferredInstallPrompt = null;
-    });
-  } else if (window.neuronavPWA) {
-    // Fall back to pwa.js helper (shows manual instructions)
-    window.neuronavPWA.showManualInstallHelp();
-  } else {
+  if (!deferredInstallPrompt) {
     toast('Install Not Available', 'Try using the browser menu to add to home screen', '#f59e0b');
+    return;
   }
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then((choice) => {
+    if (choice.outcome === 'accepted') {
+      console.log('User installed NeuroNav');
+    } else {
+      toast('Install Dismissed', 'You can install anytime from Settings', '#f59e0b');
+    }
+    deferredInstallPrompt = null;
+  });
 }
 
 // Check if already installed (display-mode: standalone)
@@ -7254,6 +7648,5 @@ if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.
   if (installedLabel) installedLabel.style.display = 'inline';
 }
 </script>
-<script src="pwa.js" defer></script>
 </body>
 </html>
