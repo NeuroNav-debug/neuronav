@@ -277,7 +277,7 @@ function showManualInstallHelp() {
     ">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
         <h3 style="font-size:1.1rem;font-weight:800">📦 Install NeuroNav</h3>
-        <button onclick="this.closest('.modal-overlay').remove()" style="
+        <button onclick="document.getElementById('pwaManualModal').remove()" style="
           width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border);
           background: var(--bg-elevated); color: var(--text-muted); cursor: pointer;
           font-size: .9rem; display: flex; align-items: center; justify-content: center;
@@ -295,6 +295,7 @@ function showManualInstallHelp() {
     </div>
   `;
 
+  modal.id = 'pwaManualModal';
   modal.className = 'modal-overlay';
   modal.addEventListener('click', (e) => {
     if (e.target === modal) modal.remove();
