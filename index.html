@@ -25,7 +25,6 @@
   --shadow-glow:0 0 40px rgba(124,58,237,.3);
   --radius:14px;--radius-lg:20px;--radius-sm:10px;
   --t:all .25s cubic-bezier(.4,0,.2,1);--tb:all .4s cubic-bezier(.68,-.55,.265,1.55);
-  --sidebar-w:230px;--sidebar-collapsed-w:64px;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
@@ -169,10 +168,6 @@ body.reduce-motion .bg-orb{display:none}
 .qc-btn:active,.emergency-btn:active{transform:scale(.88)}
 .qc-panel{position:fixed;bottom:calc(124px + env(safe-area-inset-bottom));left:14px;z-index:91;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow-lg);width:260px;display:none}
 .qc-panel.show{display:block;animation:sIn .2s ease}
-
-/* SIDEBAR — hidden, replaced by drawer */
-.sidebar,.sidebar-overlay{display:none !important}
-.mobile-menu-btn{display:none}
 
 /* SECTIONS */
 .section{display:none;animation:sIn .25s cubic-bezier(.4,0,.2,1)}
@@ -3547,11 +3542,6 @@ function closeDrawer(){
   document.getElementById('drawerOverlay').classList.remove('show');
   document.getElementById('tab-more').classList.remove('active');
 }
-// Keep old sidebar stubs so any remaining refs don't break
-function toggleSidebar(){}
-function openMobileSidebar(){}
-function closeMobileSidebar(){}
-
 // ===== NAV =====
 const SECTION_ORDER=['quests','notes','habits','stats','calendar','todo','dopamine','timer','wins','reset','strategies','game','coach','sensory','bodydouble','thoughtdump','breakdown','rsd','regulate'];
 function showSection(id){
@@ -4156,7 +4146,7 @@ function addTodo(){
 }
 function toggleTodo(id){
   const t=state.todos.find(x=>x.id===id);if(!t)return;t.done=!t.done;
-  if(t.done){addXP(10);confetti();duckDance();doneTodoCount++;checkAch('five_todos');toast('Task Done! ✅',t.text,'#10b981');}
+  if(t.done){addXP(10);confetti();doneTodoCount++;checkAch('five_todos');toast('Task Done! ✅',t.text,'#10b981');awardOneAnimal();}
   save();renderTodoList();
 }
 function deleteTodo(id){state.todos=state.todos.filter(t=>t.id!==id);save();renderTodoList();}
@@ -4354,7 +4344,7 @@ function playChime(){
 }
 function duckDance(variant,big){
   const layer=document.getElementById('duckLayer');if(!layer)return;
-  if(big)playChime();else playQuack();
+  if(big)playChime();
   const tier=getStreakTier();
   const duckIdx=Math.floor(Math.random()*DUCK_COLORS.length);
   let c=DUCK_COLORS[duckIdx];
@@ -4403,7 +4393,7 @@ function duckDance(variant,big){
   }
   layer.appendChild(wrap);
   setTimeout(()=>wrap.remove(),big?2200:1600);
-  setTimeout(()=>{trackDuckCollection(duckIdx);maybeRollBonusAnimal();},650);
+  setTimeout(()=>trackDuckCollection(duckIdx),650);
 }
 
 // ===== ANIMAL POND =====
@@ -4503,7 +4493,7 @@ function findPondVariant(id){
 function pondOwned(id){return (state.pondCollected||[]).includes(id);}
 function animalCelebrate(svgInner,big){
   const layer=document.getElementById('duckLayer');if(!layer)return;
-  if(big)playChime();else playQuack();
+  if(big)playChime();
   const wrap=document.createElement('div');wrap.className='duck-pop'+(big?' duck-pop-big':'');
   wrap.innerHTML=`<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">${svgInner}</svg>`;
   const numSparkles=big?8+Math.floor(Math.random()*4):4+Math.floor(Math.random()*3);
@@ -4543,16 +4533,17 @@ function collectPondAnimal(id,announce){
 function trackDuckCollection(idx){
   collectPondAnimal('duck_'+idx,true);
 }
-function maybeRollBonusAnimal(){
-  if(Math.random()>0.18)return;
+function awardOneAnimal(){
   const pool=[];
   POND_SPECIES.forEach(sp=>{
-    if(sp.key==='duck')return;
     sp.variants.forEach(v=>{if(v.rarity==='common'&&!pondOwned(v.id))pool.push(v.id);});
   });
-  if(!pool.length)return;
-  const pick=pool[Math.floor(Math.random()*pool.length)];
-  collectPondAnimal(pick,true);
+  if(pool.length){collectPondAnimal(pool[Math.floor(Math.random()*pool.length)],true);return;}
+  const rarePool=[];
+  POND_SPECIES.forEach(sp=>{
+    sp.variants.forEach(v=>{if(v.rarity==='rare'&&!pondOwned(v.id))rarePool.push(v.id);});
+  });
+  if(rarePool.length)collectPondAnimal(rarePool[Math.floor(Math.random()*rarePool.length)],true);
 }
 function buyPondAnimal(id){
   const found=findPondVariant(id);if(!found)return;
@@ -7607,9 +7598,9 @@ if(!ACH.find(x=>x.id==='level_20')) ACH.push({id:'level_20',name:'NeuroNav Maste
 let deferredInstallPrompt = null;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // pwa.js (inlined below) owns e.preventDefault() and the banner/floating button.
-  // This block only keeps the in-app UI buttons (auth screen + settings) in sync.
+  e.preventDefault();
   deferredInstallPrompt = e;
+  // Show install buttons
   const authBtn = document.getElementById('authInstallBtn');
   const settingsBtn = document.getElementById('settingsInstallBtn');
   if (authBtn) authBtn.style.display = 'block';
@@ -7618,6 +7609,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
 
 window.addEventListener('appinstalled', () => {
   deferredInstallPrompt = null;
+  // Hide install buttons, show installed label
   const authBtn = document.getElementById('authInstallBtn');
   const settingsBtn = document.getElementById('settingsInstallBtn');
   const installedLabel = document.getElementById('settingsInstalledLabel');
@@ -7628,19 +7620,19 @@ window.addEventListener('appinstalled', () => {
 });
 
 function installApp() {
-  if (deferredInstallPrompt) {
-    deferredInstallPrompt.prompt();
-    deferredInstallPrompt.userChoice.then((choice) => {
-      if (choice.outcome !== 'accepted') {
-        toast('Install Dismissed', 'You can install anytime from Settings', '#f59e0b');
-      }
-      deferredInstallPrompt = null;
-    });
-  } else if (window.neuronavPWA) {
-    window.neuronavPWA.showManualInstallHelp();
-  } else {
+  if (!deferredInstallPrompt) {
     toast('Install Not Available', 'Try using the browser menu to add to home screen', '#f59e0b');
+    return;
   }
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then((choice) => {
+    if (choice.outcome === 'accepted') {
+      console.log('User installed NeuroNav');
+    } else {
+      toast('Install Dismissed', 'You can install anytime from Settings', '#f59e0b');
+    }
+    deferredInstallPrompt = null;
+  });
 }
 
 // Check if already installed (display-mode: standalone)
